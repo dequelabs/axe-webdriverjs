@@ -2,7 +2,7 @@ var WebDriver = require('selenium-webdriver'),
 	assert = require('chai').assert,
 	AxeBuilder = require('../../lib');
 
-describe('doc-lang.html', function () {
+describe('outer-frame.html', function () {
 	this.timeout(10000);
 
 	var driver;
@@ -11,8 +11,10 @@ describe('doc-lang.html', function () {
 			.forBrowser('firefox')
 			.build();
 
+		driver.manage().timeouts().setScriptTimeout(500);
+
 		driver
-			.get('http://localhost:9876/test/fixtures/doc-lang.html')
+			.get('http://localhost:9876/test/fixtures/outer-frame.html')
 			.then(function () {
 				done();
 			});
@@ -28,18 +30,24 @@ describe('doc-lang.html', function () {
 			.analyze(function (results) {
 				assert.lengthOf(results.violations, 1);
 				assert.equal(results.violations[0].id, 'html-lang');
-				assert.lengthOf(results.passes, 0);
+				assert.lengthOf(results.violations[0].nodes[0].target, 2, 'finds the iframe <html> element');
+
+				assert.lengthOf(results.passes, 1);
+				assert.equal(results.passes[0].id, 'html-lang');
+				assert.lengthOf(results.passes[0].nodes[0].target, 1, 'main page <html> element');
+
 				done();
 			});
 	});
 
-	it('should not find violations when given context (document level rule)', function (done) {
+	it('should accept options', function (done) {
 		AxeBuilder(driver)
 			.include('body')
+			.options({ checks: { "valid-lang": { options: ['bob'] }}})
 			.withRules('html-lang')
 			.analyze(function (results) {
 				assert.lengthOf(results.violations, 0);
-				assert.lengthOf(results.passes, 0);
+				assert.lengthOf(results.passes, 1);
 				done();
 			});
 	});

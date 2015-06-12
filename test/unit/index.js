@@ -58,6 +58,20 @@ describe('Builder', function () {
 		});
 	});
 
+	describe('options', function () {
+		it('should clobber _options with provided parameter', function () {
+			var builder = new Builder();
+			builder.options('bob');
+			assert.equal(builder._options, 'bob');
+			builder.options('fred');
+			assert.equal(builder._options, 'fred');
+		});
+
+		it('should return itself', function () {
+			assert.instanceOf(new Builder().options('bob'), Builder);
+		});
+	});
+
 	describe('analyze', function () {
 		it('should normalize context', function (done) {
 			var normalized = false;
@@ -132,8 +146,6 @@ describe('Builder', function () {
 					assert.equal(results, 'results');
 					done();
 				});
-
 		});
-
 	});
 });
