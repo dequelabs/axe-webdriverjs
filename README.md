@@ -115,4 +115,4 @@ This project has a couple integrations that demonstrate the ability and use of t
 
 ## Contributing
 
-This repository is available for download and enhancement. We will accept pull requests once we publish our Contributor agreement.
+Read the [documentation on contributing](CONTRIBUTING.md)
