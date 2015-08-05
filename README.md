@@ -109,8 +109,9 @@ AxeBuilder(driver)
 
 This project has a couple integrations that demonstrate the ability and use of this module:
 
-1. [test/integration/doc-lang.js](test/integration/doc-lang.js)
-1. [test/integration/frames.js](test/integration/frames.js)
+1. [Running a single rule](test/integration/doc-lang.js)
+1. [Running against a page with frames](test/integration/frames.js)
+1. [SauceLabs example](test/integration/sauce.js)
 
 
 ## Contributing
