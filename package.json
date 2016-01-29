@@ -26,6 +26,7 @@
     "webdriverjs"
   ],
   "scripts": {
+    "preinstall": "lib/warn.js",
     "test": "grunt test"
   },
   "dependencies": {
