@@ -4,9 +4,11 @@ Provides a chainable aXe API for Selenium's WebDriverJS and automatically inject
 
 ## Getting Started
 
+Install [Node.js](https://docs.npmjs.com/getting-started/installing-node) and [Selenium Webdriver](https://www.npmjs.com/package/selenium-webdriver) if you haven't already.
+
 Install aXe-core: `npm install axe-core`
 
-Install the module: `npm install axe-webdriverjs`
+Install the module and its dependencies: `npm install axe-webdriverjs`
 
 ## Usage
 
