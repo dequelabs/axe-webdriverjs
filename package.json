@@ -31,7 +31,7 @@
   },
   "peerDependencies": {
     "selenium-webdriver": "^2.46.1",
-    "axe-core": "~1.0.1"
+    "axe-core": "~1.1.1"
   },
   "devDependencies": {
     "chai": "^3.0.0",
@@ -44,6 +44,7 @@
     "istanbul": "^0.3.15",
     "mocha": "^2.2.5",
     "proxyquire": "^1.5.0",
-    "serve-static": "^1.9.3"
+    "serve-static": "^1.9.3",
+    "sinon": "^1.17.3"
   }
 }
