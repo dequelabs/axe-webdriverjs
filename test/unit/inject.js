@@ -1,9 +1,9 @@
-var assert = require('chai').assert;
-var proxyquire = require('proxyquire');
+var assert = require('chai').assert,
+	sinon = require('sinon');
 
 var Builder = require('../../lib/index');
-// can't depend on an optional module. shim it?
-var Attest = require('../../node_modules/attest/index.js')(process.env.ATTEST_PATH);
+
+var sourceString = '/*! aXe v */\naxe.configure({"data":"something"});';
 
 describe('Attest', function () {
 	beforeEach(function(){
@@ -13,7 +13,8 @@ describe('Attest', function () {
 		delete process.env.ATTEST_PATH;
 	});
 
-	it('should assign Attest source to this._source', function () {
-		assert.match(new Builder('bob', Attest.source)._source, /((axe\.configure\(\{(.+)\}\)\;))$/, 'regexp matches');
+	it('should assign optional source to this._source', function () {
+		var driver = sinon.stub();
+		assert.match(new Builder(driver, sourceString)._source, /\/\*! aXe/, 'regexp matches');
 	});
 });
