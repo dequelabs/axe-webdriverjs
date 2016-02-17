@@ -76,7 +76,7 @@ describe('Builder', function () {
 		it('should normalize context', function (done) {
 			var normalized = false;
 			var Builder = proxyquire('../../lib/index', {
-				'./inject': function (driver, cb) {
+				'./inject': function (driver, source, cb) {
 					cb(null, 'source-code');
 				},
 				'./normalize-context': function (include, exclude) {
@@ -108,7 +108,7 @@ describe('Builder', function () {
 		it('should inject into the page under test', function () {
 			var called = false;
 			var Builder = proxyquire('../../lib/index', {
-				'./inject': function (driver, cb) {
+				'./inject': function (driver, source, cb) {
 					assert.equal(driver, 'driver');
 					assert.isFunction(cb);
 					called = true;
@@ -121,7 +121,7 @@ describe('Builder', function () {
 
 		it('should call axe.a11yCheck with given parameters', function (done) {
 			var Builder = proxyquire('../../lib/index', {
-				'./inject': function (driver, cb) {
+				'./inject': function (driver, source, cb) {
 					cb(null, 'source-code');
 				},
 				'./normalize-context': function (include, exclude) {
