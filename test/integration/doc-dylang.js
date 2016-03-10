@@ -1,6 +1,6 @@
 /**
  * This test tests to make sure that a valid configuration works. Requires
- * axe-core >= 2.0.0, hence the temporary conidtional check for a local version
+ * axe-core >= 2.0.0, hence the temporary conditional check for a local version
  * of axe-core
  */
 var WebDriver = require('selenium-webdriver'),
@@ -11,7 +11,7 @@ var WebDriver = require('selenium-webdriver'),
 	colors = require('colors');
 
 try {
-	var axe = require('../../../axe-core/dist/index.js');
+	var axe = require('../../../axe-bb/dist/index.js');
 
 	describe('doc-dylang.html', function () {
 		this.timeout(10000);
@@ -35,7 +35,7 @@ try {
 			});
 		});
 
-		it('should find violations', function (done) {
+		it('should find violations with customized helpUrl', function (done) {
 			var src = '\naxe.configure(' + JSON.stringify(json) + ');';
 			src = axe.source + src;
 			AxeBuilder(driver, src)
@@ -43,6 +43,7 @@ try {
 				.analyze(function (results) {
 					assert.lengthOf(results.violations, 1);
 					assert.equal(results.violations[0].id, 'dylang');
+					assert.notEqual(results.violations[0].helpUrl.indexOf('application=webdriverjs'), -1);
 					assert.lengthOf(results.passes, 0);
 					done();
 				});
