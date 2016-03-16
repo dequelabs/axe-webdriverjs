@@ -113,6 +113,14 @@ This project has a couple integrations that demonstrate the ability and use of t
 2. [Running against a page with frames](test/integration/frames.js)
 3. [SauceLabs example](test/integration/sauce.js)
 
+SauceLabs credentials need to be set as the `environment variable`, prior executing `mocha test/integration/sauce.js` or `npm test`
+
+```
+export SAUCE_USERNAME=XXXXXXXX
+export SAUCE_ACCESS_KEY=YYYYYYYY
+```
+`XXXXXXXX` needs to be replaced with SauceLabs `username` and `YYYYYYYY` with SauceLabs `access key` respectively.
+More information on SauceLabs `username` and `access key` can be found [here](https://support.saucelabs.com/customer/en/portal/articles/2092509-protecting-your-access-key)
 
 ## Contributing
 
