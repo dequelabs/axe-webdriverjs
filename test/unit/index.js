@@ -1,3 +1,6 @@
+/* globals describe, it */
+
+'use strict';
 
 var assert = require('chai').assert;
 var proxyquire = require('proxyquire');
@@ -124,7 +127,7 @@ describe('Builder', function () {
 				'./inject': function (driver, cb) {
 					cb(null, 'source-code');
 				},
-				'./normalize-context': function (include, exclude) {
+				'./normalize-context': function () {
 					return 'normalized';
 				}
 			});

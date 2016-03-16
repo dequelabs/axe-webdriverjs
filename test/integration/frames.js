@@ -1,3 +1,7 @@
+/* globals describe, before, after, it */
+
+'use strict';
+
 var WebDriver = require('selenium-webdriver'),
 	assert = require('chai').assert,
 	AxeBuilder = require('../../lib');
@@ -43,7 +47,7 @@ describe('outer-frame.html', function () {
 	it('should accept options', function (done) {
 		AxeBuilder(driver)
 			.include('body')
-			.options({ checks: { "valid-lang": { options: ['bob'] }}})
+			.options({ checks: { 'valid-lang': { options: ['bob'] }}})
 			.withRules('html-lang')
 			.analyze(function (results) {
 				assert.lengthOf(results.violations, 0);

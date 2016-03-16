@@ -1,3 +1,7 @@
+/* globals describe, before, after, it */
+
+'use strict';
+
 var WebDriver = require('selenium-webdriver'),
 	assert = require('chai').assert,
 	AxeBuilder = require('../../lib');
