@@ -18,8 +18,10 @@ describe('doc-lang.html', function () {
 			});
 	});
 
-	after(function () {
-		driver.quit();
+	after(function (done) {
+		driver.quit().then(function () {
+			done();
+		});
 	});
 
 	it('should find violations', function (done) {

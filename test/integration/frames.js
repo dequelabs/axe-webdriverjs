@@ -28,7 +28,7 @@ describe('outer-frame.html', function () {
 		AxeBuilder(driver)
 			.withRules('html-lang-valid')
 			.analyze(function (results) {
-				assert.lengthOf(results.violations, 1);
+				assert.lengthOf(results.violations, 1, 'violations');
 				assert.equal(results.violations[0].id, 'html-lang-valid');
 				assert.lengthOf(results.violations[0].nodes[0].target, 2, 'finds the iframe <html> element');
 
