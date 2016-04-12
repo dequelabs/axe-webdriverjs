@@ -26,14 +26,14 @@ describe('outer-frame.html', function () {
 
 	it('should find violations', function (done) {
 		AxeBuilder(driver)
-			.withRules('html-lang')
+			.withRules('html-lang-valid')
 			.analyze(function (results) {
-				assert.lengthOf(results.violations, 1);
-				assert.equal(results.violations[0].id, 'html-lang');
+				assert.lengthOf(results.violations, 1, 'violations');
+				assert.equal(results.violations[0].id, 'html-lang-valid');
 				assert.lengthOf(results.violations[0].nodes[0].target, 2, 'finds the iframe <html> element');
 
 				assert.lengthOf(results.passes, 1);
-				assert.equal(results.passes[0].id, 'html-lang');
+				assert.equal(results.passes[0].id, 'html-lang-valid');
 				assert.lengthOf(results.passes[0].nodes[0].target, 1, 'main page <html> element');
 
 				done();
@@ -44,7 +44,7 @@ describe('outer-frame.html', function () {
 		AxeBuilder(driver)
 			.include('body')
 			.options({ checks: { "valid-lang": { options: ['bob'] }}})
-			.withRules('html-lang')
+			.withRules('html-lang-valid')
 			.analyze(function (results) {
 				assert.lengthOf(results.violations, 0);
 				assert.lengthOf(results.passes, 1);
@@ -54,13 +54,13 @@ describe('outer-frame.html', function () {
 
 	it('should not find violations when the rule is disabled', function (done) {
 		AxeBuilder(driver)
-			.options({ rules: { 'html-lang': { enabled: false } } })
+			.options({ rules: { 'html-lang-valid': { enabled: false } } })
 			.analyze(function (results) {
 				results.violations.forEach(function (violation) {
-					assert.notEqual(violation.id, 'html-lang');
+					assert.notEqual(violation.id, 'html-lang-valid');
 				});
 				results.passes.forEach(function (violation) {
-					assert.notEqual(violation.id, 'html-lang');
+					assert.notEqual(violation.id, 'html-lang-valid');
 				});
 				done();
 			});
