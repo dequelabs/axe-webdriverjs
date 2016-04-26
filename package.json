@@ -1,7 +1,7 @@
 {
   "name": "axe-webdriverjs",
   "description": "Provides a method to inject and analyze web pages using aXe",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "license": "MPL-2.0",
   "main": "lib/index.js",
   "author": {
@@ -33,7 +33,7 @@
   },
   "peerDependencies": {
     "selenium-webdriver": "^2.46.1",
-    "axe-core": "~2.0.5"
+    "axe-core": "~2.0.7"
   },
   "devDependencies": {
     "chai": "^3.0.0",
