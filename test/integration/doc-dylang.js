@@ -3,7 +3,7 @@
  * axe-core >= 2.0.0, hence the temporary conditional check for a local version
  * of axe-core
  */
-var WebDriver = require('selenium-webdriver'),
+var runWebdriver = require('../run-webdriver'),
 	json = require('../fixtures/attest-config.json'),
 	assert = require('chai').assert,
 	AxeBuilder = require('../../lib'),
@@ -16,12 +16,8 @@ describe('doc-dylang.html', function () {
 
 	var driver;
 	before(function (done) {
-		driver = new WebDriver.Builder()
-			.forBrowser('firefox')
-			.build();
-
-		driver
-			.get('http://localhost:9876/test/fixtures/doc-dylang.html')
+		driver = runWebdriver();
+		driver.get('http://localhost:9876/test/fixtures/doc-dylang.html')
 			.then(function () {
 				done();
 			});
