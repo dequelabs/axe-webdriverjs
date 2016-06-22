@@ -1,4 +1,4 @@
-var WebDriver = require('selenium-webdriver'),
+var runWebdriver = require('../run-webdriver'),
 	assert = require('chai').assert,
 	AxeBuilder = require('../../lib');
 
@@ -7,10 +7,7 @@ describe('outer-frame.html', function () {
 
 	var driver;
 	before(function (done) {
-		driver = new WebDriver.Builder()
-			.forBrowser('firefox')
-			.build();
-
+		driver = runWebdriver();
 		driver.manage().timeouts().setScriptTimeout(500);
 
 		driver
