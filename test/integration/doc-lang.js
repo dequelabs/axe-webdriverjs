@@ -1,6 +1,11 @@
 var runWebdriver = require('../run-webdriver'),
 	assert = require('chai').assert,
+	host = 'localhost',
 	AxeBuilder = require('../../lib');
+
+if (process.env.REMOTE_TESTSERVER_HOST) {
+	host = process.env.REMOTE_TESTSERVER_HOST;
+}
 
 describe('doc-lang.html', function () {
 	this.timeout(10000);
@@ -9,7 +14,7 @@ describe('doc-lang.html', function () {
 	before(function (done) {
 		driver = runWebdriver();
 		driver
-			.get('http://localhost:9876/test/fixtures/doc-lang.html')
+			.get('http://' + host + ':9876/test/fixtures/doc-lang.html')
 			.then(function () {
 				done();
 			});

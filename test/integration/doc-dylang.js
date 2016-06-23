@@ -7,9 +7,15 @@ var runWebdriver = require('../run-webdriver'),
 	json = require('../fixtures/attest-config.json'),
 	assert = require('chai').assert,
 	AxeBuilder = require('../../lib'),
+	host = 'localhost',
 	fs = require('fs');
 
-	var axe = require('axe-core');
+var axe = require('axe-core');
+
+if (process.env.REMOTE_TESTSERVER_HOST) {
+	host = process.env.REMOTE_TESTSERVER_HOST;
+}
+
 
 describe('doc-dylang.html', function () {
 	this.timeout(10000);
@@ -17,7 +23,7 @@ describe('doc-dylang.html', function () {
 	var driver;
 	before(function (done) {
 		driver = runWebdriver();
-		driver.get('http://localhost:9876/test/fixtures/doc-dylang.html')
+		driver.get('http://' + host + ':9876/test/fixtures/doc-dylang.html')
 			.then(function () {
 				done();
 			});
