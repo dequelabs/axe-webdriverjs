@@ -24,10 +24,10 @@ describe('doc-lang.html', function () {
 
 	it('should find violations', function (done) {
 		AxeBuilder(driver)
-			.withRules('html-lang')
+			.withRules('html-has-lang')
 			.analyze(function (results) {
 				assert.lengthOf(results.violations, 1);
-				assert.equal(results.violations[0].id, 'html-lang');
+				assert.equal(results.violations[0].id, 'html-has-lang');
 				assert.lengthOf(results.passes, 0);
 				done();
 			});
@@ -36,7 +36,7 @@ describe('doc-lang.html', function () {
 	it('should not find violations when given context (document level rule)', function (done) {
 		AxeBuilder(driver)
 			.include('body')
-			.withRules('html-lang')
+			.withRules('html-has-lang')
 			.analyze(function (results) {
 				assert.lengthOf(results.violations, 0);
 				assert.lengthOf(results.passes, 0);
@@ -46,13 +46,13 @@ describe('doc-lang.html', function () {
 
 	it('should not find violations when the rule is disabled', function (done) {
 		AxeBuilder(driver)
-			.options({ rules: { 'html-lang': { enabled: false } } })
+			.options({ rules: { 'html-has-lang': { enabled: false } } })
 			.analyze(function (results) {
 				results.violations.forEach(function (violation) {
-					assert.notEqual(violation.id, 'html-lang');
+					assert.notEqual(violation.id, 'html-has-lang');
 				});
 				results.passes.forEach(function (violation) {
-					assert.notEqual(violation.id, 'html-lang');
+					assert.notEqual(violation.id, 'html-has-lang');
 				});
 				done();
 			});
