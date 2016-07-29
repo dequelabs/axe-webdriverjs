@@ -1,7 +1,7 @@
 {
   "name": "axe-webdriverjs",
   "description": "Provides a method to inject and analyze web pages using aXe",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "license": "MPL-2.0",
   "main": "lib/index.js",
   "author": {
