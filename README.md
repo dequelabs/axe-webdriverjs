@@ -93,6 +93,23 @@ AxeBuilder(driver)
   .withTags(['wcag2a', 'wcag2aa']);
 ```
 
+### AxeBuilder#configure(config:Object)
+
+Inject a configuration object to modify the aXe ruleset before running Analyze. This is the axe-webdriverjs version of `axe.configure`. See [axe-core API documentation](https://github.com/dequelabs/axe-core/blob/master/doc/API.md) for information on its structure. 
+
+```javascript
+var config = {
+  'rules': {
+    'id': 'angular-ng-click'
+  }
+}
+AxeBuilder(driver)
+  .configure(config)
+  .analyze(function (results) {
+    console.log(results);
+  });
+```
+
 
 ### AxeBuilder#analyze(callback:Function)
 

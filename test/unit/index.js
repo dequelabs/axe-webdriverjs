@@ -25,6 +25,10 @@ describe('Builder', function () {
 			assert.isNull(new Builder()._options);
 		});
 
+		it('should define this._config as null', function () {
+			assert.isNull(new Builder()._config);
+		});
+
 		it('should still work even if not used with new keyword', function () {
 			assert.instanceOf(Builder(), Builder);
 		});
@@ -69,6 +73,60 @@ describe('Builder', function () {
 
 		it('should return itself', function () {
 			assert.instanceOf(new Builder().options('bob'), Builder);
+		});
+	});
+
+	describe('configure', function () {
+		it('should take a config object to customize aXe', function (done) {
+			var catsConfig = {
+				'checks': {
+					'id': 'cats',
+					'options': [
+						'cats'
+					],
+					'evaluate': "function (node, options) {\n        var lang = (node.getAttribute(\"lang\") || \"\").trim().toLowerCase();\n        var xmlLang = (node.getAttribute(\"xml:lang\") || \"\").trim().toLowerCase();\n        var invalid = [];\n        (options || []).forEach(function(cc) {\n          cc = cc.toLowerCase();\n          if (lang && (lang === cc || lang.indexOf(cc.toLowerCase() + \"-\") === 0)) {\n            lang = null;\n          }\n          if (xmlLang && (xmlLang === cc || xmlLang.indexOf(cc.toLowerCase() + \"-\") === 0)) {\n            xmlLang = null;\n          }\n        });\n        if (xmlLang) {\n          invalid.push('xml:lang=\"' + xmlLang + '\"');\n        }\n        if (lang) {\n          invalid.push('lang=\"' + lang + '\"');\n        }\n        if (invalid.length) {\n          this.data(invalid);\n          return true;\n        }\n        return false;\n      }",
+					"metadata": {
+					    "impact": "critical",
+					    "messages": {
+					      "pass": "The lang attribute is cats",
+					      "fail": "The lang attribute can only be cats"
+					    }
+					  }
+				},
+				'rules': {
+					'id': 'cats',
+					'enabled': true,
+					'selector': 'html',
+					'any': ['cats'],
+					'metadata': {
+						"description": "Ensures lang attributes have the value of cats",
+					    "help": "lang attribute must have the value of cats",
+					    "helpUrl": "https://example.com/cats"
+				    }
+				}
+			};
+			var Builder = proxyquire('../../lib/index', {
+				'./inject': function (driver, cb) {
+					cb(null, 'source-code');
+				}
+			});
+
+			new Builder({
+					executeAsyncScript: function (callback, context, options, config) {
+						assert.equal(config, catsConfig);
+
+						return {
+							then: function (cb) {
+								cb('results');
+							}
+						};
+					}
+				})
+				.configure(catsConfig)
+				.analyze(function (results) {
+					assert.equal(results, 'results');
+					done();
+				});
 		});
 	});
 
