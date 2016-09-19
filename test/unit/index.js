@@ -128,6 +128,19 @@ describe('Builder', function () {
 					done();
 				});
 		});
+
+		it('should throw a useful error', function (done) {
+			var builder = new Builder();
+
+			assert.throws(function () {
+				builder.configure('cats');
+			});
+
+			assert.throws(function () {
+				builder.configure(undefined);
+			});
+			done();
+		});
 	});
 
 	describe('analyze', function () {
