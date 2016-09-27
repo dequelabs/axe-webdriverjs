@@ -55,5 +55,7 @@ module.exports = function (grunt) {
 		},
 	});
 
+	grunt.registerTask('test-unit', ['mocha_istanbul', 'jshint']);
+
 	grunt.registerTask('test', ['mocha_istanbul', 'connect', 'mochaTest', 'jshint']);
 };
