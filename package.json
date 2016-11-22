@@ -33,7 +33,7 @@
   },
   "peerDependencies": {
     "selenium-webdriver": "^2.46.1",
-    "axe-core": "^2.0.5"
+    "axe-core": "^2.0.7"
   },
   "devDependencies": {
     "chai": "^3.0.0",
