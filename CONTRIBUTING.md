@@ -78,6 +78,7 @@ function CheckResult(check) {
 ## Setting up your environment
 
 In order to get going, fork and clone the repository. Then, if you do not have [Node.js](https://nodejs.org/download/) installed, install it!
+axe-webdriverjs runs tests using Selenium Webdriver 3, which requires Node 6.9.0 or higher.
 
 Once you have Node.js installed, from the repository root, do the following:
 
