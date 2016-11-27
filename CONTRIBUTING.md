@@ -25,6 +25,8 @@ That having been said, we prefer:
 
 We expect all code to be 100% covered by tests. We don't have or want code coverage metrics but we will review tests and suggest changes when we think the test(s) do(es) not adequately exercise the code/code changes.
 
+Please note, when testing, axe-webdriverjs requires selenium-webdriver 3.0, which in term, requires NodeJS 6.0 or above.
+
 ### Documentation and Comments
 
 Functions should contain a preceding comment block with [jsdoc](http://usejsdoc.org/) style documentation of the function. For example:
