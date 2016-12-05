@@ -33,8 +33,6 @@
     "preinstall": "node lib/warn.js",
     "test": "grunt test"
   },
-  "dependencies": {
-  },
   "peerDependencies": {
     "selenium-webdriver": "^3.0.0",
     "axe-core": "^2.0.7"
@@ -51,7 +49,8 @@
     "mocha": "^3.1.2",
     "proxyquire": "^1.5.0",
     "serve-static": "^1.9.3",
-    "sinon": "^1.17.3"
+    "sinon": "^1.17.3",
+    "axe-core": "~2.0.5"
   },
   "dependencies": {
   }
