@@ -106,7 +106,7 @@ describe('Builder', function () {
 				}
 			};
 			var Builder = proxyquire('../../lib/index', {
-				'./inject': function (driver, cb) {
+				'./inject': function (driver, source, cb) {
 					cb(null, 'source-code');
 				}
 			});
