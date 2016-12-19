@@ -4,7 +4,15 @@
   "version": "1.1.0",
   "license": "MPL-2.0",
   "main": "lib/index.js",
-  "author": [{
+  "contributors": [{
+    "name": "Dylan Barrell",
+    "organization": "Deque Systems, Inc.",
+    "url": "http://github.com/dylanb/"
+  }, {
+    "name": "Marcy Sutton",
+    "organization": "Deque Systems, Inc.",
+    "url": "http://github.com/marcysutton/"
+  }, {
     "name": "Wilco Fiers",
     "organization": "Deque Systems, Inc.",
     "url": "http://github.com/wilcofiers/"
