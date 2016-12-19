@@ -4,7 +4,12 @@ Provides a chainable aXe API for Selenium's WebDriverJS and automatically inject
 
 ## Getting Started
 
-Install the module; `npm install axe-webdriverjs`
+Install [Node.js](https://docs.npmjs.com/getting-started/installing-node) and [Selenium Webdriver](https://www.npmjs.com/package/selenium-webdriver) if you haven't already.
+For running axe-webdriverjs tests read more about [setting up your environment](CONTRIBUTING.md).
+
+Install aXe-core: `npm install axe-core`
+
+Install the module and its dependencies: `npm install axe-webdriverjs`
 
 ## Usage
 
@@ -29,12 +34,19 @@ driver
   });
 ```
 
-### AxeBuilder(driver:WebDriver)
+### AxeBuilder(driver:WebDriver[, axeSource:string])
 
 Constructor for the AxeBuilder helper. You must pass an instance of selenium-webdriver as the first and only argument.  Can be called with or without the `new` keyword.
 
 ```javascript
 var builder = AxeBuilder(driver);
+```
+
+If you wish to run a specific version of axe-core, you can pass the source axe-core source file in as a string. Doing so will mean axe-webdriverjs runs this version of axe-core, instead of the one installed as a dependency of axe-webdriverjs.
+
+```javascript
+var axeSource = fs.readFileSync('./axe-1.0.js', 'utf8');
+var builder = AxeBuilder(driver, axeSource);
 ```
 
 ### AxeBuilder#include(selector:String)

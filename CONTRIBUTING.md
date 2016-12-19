@@ -25,6 +25,8 @@ That having been said, we prefer:
 
 We expect all code to be 100% covered by tests. We don't have or want code coverage metrics but we will review tests and suggest changes when we think the test(s) do(es) not adequately exercise the code/code changes.
 
+Please note, when testing, axe-webdriverjs requires selenium-webdriver 3.0, which in term, requires NodeJS 6.0 or above.
+
 ### Documentation and Comments
 
 Functions should contain a preceding comment block with [jsdoc](http://usejsdoc.org/) style documentation of the function. For example:
@@ -78,18 +80,13 @@ function CheckResult(check) {
 ## Setting up your environment
 
 In order to get going, fork and clone the repository. Then, if you do not have [Node.js](https://nodejs.org/download/) installed, install it!
+axe-webdriverjs runs tests using Selenium Webdriver 3, which requires Node 6.9.0 or higher.
 
-Once you have Node.js installed, if you do not have Bower installed do:
-
-```
-npm install -g bower
-```
-
-Once the basic infrastructure is installed, from the repository root, do the following:
+Once you have Node.js installed, from the repository root, do the following:
 
 ```
+npm install axe-core
 npm install
-bower install
 ```
 
 To run tests:
