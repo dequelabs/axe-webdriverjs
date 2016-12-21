@@ -37,6 +37,13 @@ module.exports = function (grunt) {
 					grep: grunt.option('grep')
 				},
 				src: ['test/integration/**/*.js']
+			},
+			sauce: {
+				options: {
+					reporter: grunt.option('report') ? 'xunit-file' : 'spec',
+					grep: grunt.option('grep')
+				},
+				src: ['test/sauce/**/*.js']
 			}
 		},
 		jshint: {
@@ -57,5 +64,7 @@ module.exports = function (grunt) {
 
 	grunt.registerTask('test-unit', ['mocha_istanbul', 'jshint']);
 
-	grunt.registerTask('test', ['mocha_istanbul', 'connect', 'mochaTest', 'jshint']);
+	grunt.registerTask('test', ['mocha_istanbul', 'connect', 'mochaTest:integration', 'jshint']);
+
+	grunt.registerTask('test-sauce', ['mocha_istanbul', 'connect', 'mochaTest:sauce', 'jshint']);
 };
