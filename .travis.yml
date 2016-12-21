@@ -2,4 +2,4 @@ language: node_js
 node_js:
   - '6'
 script:
-  - npm run test
+  - npm install selenium-webdriver@^3.0.0 && npm run test
