@@ -143,7 +143,7 @@ This project has a couple integrations that demonstrate the ability and use of t
 
 1. [Running a single rule](test/integration/doc-lang.js)
 1. [Running against a page with frames](test/integration/frames.js)
-1. [SauceLabs example](test/integration/sauce.js)
+1. [SauceLabs example](test/sauce/sauce.js)
 
 
 ## Contributing
