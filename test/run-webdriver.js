@@ -4,12 +4,12 @@ function runWebdriver() {
 	var	webdriver;
 	if (process.env.REMOTE_SELENIUM_URL) {
 		webdriver = new WebDriver.Builder()
-		.forBrowser('chrome')
+		.forBrowser('firefox')
 		.usingServer(process.env.REMOTE_SELENIUM_URL)
 		.build();
 	} else {
 		webdriver = new WebDriver.Builder()
-		.forBrowser('chrome')
+		.forBrowser('firefox')
 		.build();
 	}
 
