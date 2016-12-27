@@ -17,12 +17,19 @@ describe('doc-lang.html', function () {
 			.get('http://' + host + ':9876/test/fixtures/doc-lang.html')
 			.then(function () {
 				done();
+			})
+			.catch(function(e) {
+				console.log(e);
+				done();
 			});
 	});
 
 	after(function (done) {
 		driver.quit().then(function () {
 			done();
+		})
+		.catch(function(e) {
+			console.log(e);
 		});
 	});
 
