@@ -39,7 +39,7 @@
   ],
   "scripts": {
     "preinstall": "node lib/warn.js",
-    "test": "node --debug ./node_modules/.bin/grunt test"
+    "test": "grunt test"
   },
   "peerDependencies": {
     "selenium-webdriver": "^3.0.0",
