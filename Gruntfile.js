@@ -33,6 +33,7 @@ module.exports = function (grunt) {
 		mochaTest: {
 			integration: {
 				options: {
+					noFail: true,
 					reporter: grunt.option('report') ? 'xunit-file' : 'spec',
 					grep: grunt.option('grep')
 				},
