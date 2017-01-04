@@ -21,9 +21,10 @@ Install the module and its dependencies: `npm install axe-webdriverjs`
 This module uses a chainable API to assist in injecting, configuring and analyzing using aXe with Selenium WebDriverJS.  As such, it is required to pass an instance of WebDriver.
 
 Here is an example of a script that will drive Selenium to this repository, perform analysis and then log results to the console.
-```
-var AxeBuilder = require('axe-webdriverjs'),
-  WebDriver = require('selenium-webdriver');
+
+```javascript
+var AxeBuilder = require('axe-webdriverjs');
+var WebDriver = require('selenium-webdriver');
 
 var driver = new WebDriver.Builder()
   .forBrowser('firefox')
@@ -122,7 +123,7 @@ var config = {
   'rules': {
     'id': 'angular-ng-click'
   }
-}
+};
 AxeBuilder(driver)
   .configure(config)
   .analyze(function (results) {
