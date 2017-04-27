@@ -31,7 +31,7 @@ var driver = new WebDriver.Builder()
   .build();
 
 driver
-  .get('https://github.com/dequelabs/axe-webdriverjs')
+  .get('https://dequeuniversity.com/demo/mars/')
   .then(function () {
     AxeBuilder(driver)
       .analyze(function (results) {
