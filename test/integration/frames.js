@@ -45,7 +45,7 @@ describe('outer-frame.html', function () {
 	it('should accept options', function (done) {
 		AxeBuilder(driver)
 			.include('body')
-			.options({ checks: { "valid-lang": { options: ['bob'] }}})
+			.options({ checks: { "valid-lang": { options: ['bobbert'] }}})
 			.withRules('html-lang-valid')
 			.analyze(function (results) {
 				assert.lengthOf(results.violations, 0);
