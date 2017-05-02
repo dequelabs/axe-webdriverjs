@@ -3,7 +3,7 @@
 [![Join the axe-core chat at https://gitter.im/dequelabs/axe-core](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/dequelabs/axe-core?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Version](https://img.shields.io/npm/v/axe-webdriverjs.svg)](https://www.npmjs.com/package/axe-webdriverjs)
 [![License](https://img.shields.io/npm/l/axe-webdriverjs.svg)](LICENSE)
-[![Build Status](https://travis-ci.org/dequelabs/axe-webdriverjs.svg?branch=master)](https://travis-ci.org/dequelabs/axe-webdriverjs)
+[![CircleCI Build](https://circleci.com/gh/dequelabs/axe-webdriverjs/tree/master.svg?style=svg)](https://circleci.com/gh/dequelabs/axe-webdriverjs/tree/master)
 
 Provides a chainable aXe API for Selenium's WebDriverJS and automatically injects into all frames.
 
