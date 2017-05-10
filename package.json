@@ -40,10 +40,6 @@
   "scripts": {
     "test": "grunt test"
   },
-  "peerDependencies": {
-    "selenium-webdriver": ">= 2.53.1",
-    "axe-core": "^2.2.0"
-  },
   "devDependencies": {
     "chai": "^3.0.0",
     "grunt": "^1.0.1",
