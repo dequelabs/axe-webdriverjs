@@ -38,7 +38,6 @@
     "webdriverjs"
   ],
   "scripts": {
-    "preinstall": "node lib/warn.js",
     "test": "grunt test"
   },
   "peerDependencies": {
