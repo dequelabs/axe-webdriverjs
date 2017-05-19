@@ -120,9 +120,8 @@ for documentation on the object structure.
 
 ```javascript
 var config = {
-  'rules': {
-    'id': 'angular-ng-click'
-  }
+  checks: [Object],
+  rules: [Object]
 };
 AxeBuilder(driver)
   .configure(config)
@@ -130,7 +129,6 @@ AxeBuilder(driver)
     console.log(results);
   });
 ```
-
 
 ### AxeBuilder#analyze(callback:Function)
 
