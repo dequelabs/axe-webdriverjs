@@ -6,6 +6,15 @@ All notable changes to this project will be documented in this file.
 
 <!-- ## [Unreleased] -->
 
+## [1.1.1] - 2017-05-20
+### Changed
+- Remove warn file on install
+- Update to axe-core 2.2.1 to resolve circular dependencies
+
+## [1.1.0] - 2017-05-02
+### Changed
+- Move axe-core to dependencies
+
 ## [0.5.0] - 2016-12-22
 ### Added
 - Support for axe-cli by passing in a source for axe-core version

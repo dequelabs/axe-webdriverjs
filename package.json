@@ -56,7 +56,7 @@
     "proxyquire": "^1.5.0",
     "serve-static": "^1.9.3",
     "sinon": "^1.17.3",
-    "axe-core": "^2.2.0"
+    "axe-core": "^2.2.1"
   },
   "dependencies": {
   }
