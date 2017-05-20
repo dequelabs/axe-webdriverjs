@@ -1,7 +1,7 @@
 var runWebdriver = require('../run-webdriver'),
 	assert = require('chai').assert,
 	host = 'localhost',
-	json = require('../fixtures/attest-config.json'),
+	json = require('../fixtures/custom-rule-config.json'),
 	AxeBuilder = require('../../lib');
 
 if (process.env.REMOTE_TESTSERVER_HOST) {

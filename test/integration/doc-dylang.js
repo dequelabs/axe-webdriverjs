@@ -4,7 +4,7 @@
  * of axe-core
  */
 var runWebdriver = require('../run-webdriver'),
-	json = require('../fixtures/attest-config.json'),
+	json = require('../fixtures/custom-rule-config.json'),
 	assert = require('chai').assert,
 	AxeBuilder = require('../../lib'),
 	host = 'localhost',
@@ -36,9 +36,9 @@ describe('doc-dylang.html', function () {
 	});
 
 	it('should find violations with customized helpUrl', function (done) {
-		var src = '\naxe.configure(' + JSON.stringify(json) + ');';
-		src = axe.source + src;
+		var src = axe.source;
 		AxeBuilder(driver, src)
+			.configure(json)
 			.withRules(['dylang'])
 			.analyze(function (results) {
 				assert.lengthOf(results.violations, 1);
