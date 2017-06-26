@@ -58,6 +58,6 @@
     "sinon": "^1.17.3"
   },
   "dependencies": {
-    "axe-core": "^2.3.0"
+    "axe-core": "^2.3.1"
   }
 }
