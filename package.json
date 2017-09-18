@@ -1,26 +1,31 @@
 {
   "name": "axe-webdriverjs",
   "description": "Provides a method to inject and analyze web pages using aXe",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "license": "MPL-2.0",
   "main": "lib/index.js",
-  "contributors": [{
-    "name": "Dylan Barrell",
-    "organization": "Deque Systems, Inc.",
-    "url": "http://github.com/dylanb/"
-  }, {
-    "name": "Marcy Sutton",
-    "organization": "Deque Systems, Inc.",
-    "url": "http://github.com/marcysutton/"
-  }, {
-    "name": "Wilco Fiers",
-    "organization": "Deque Systems, Inc.",
-    "url": "http://github.com/wilcofiers/"
-  }, {
-    "name": "David Sturley",
-    "organization": "Deque Systems, Inc.",
-    "url": "http://deque.com/"
-  }],
+  "contributors": [
+    {
+      "name": "Dylan Barrell",
+      "organization": "Deque Systems, Inc.",
+      "url": "http://github.com/dylanb/"
+    },
+    {
+      "name": "Marcy Sutton",
+      "organization": "Deque Systems, Inc.",
+      "url": "http://github.com/marcysutton/"
+    },
+    {
+      "name": "Wilco Fiers",
+      "organization": "Deque Systems, Inc.",
+      "url": "http://github.com/wilcofiers/"
+    },
+    {
+      "name": "David Sturley",
+      "organization": "Deque Systems, Inc.",
+      "url": "http://deque.com/"
+    }
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/dequelabs/axe-webdriverjs.git"
@@ -44,6 +49,7 @@
     "selenium-webdriver": ">= 2.53.1"
   },
   "devDependencies": {
+    "axe-core": "^2.4.1",
     "chai": "^3.0.0",
     "grunt": "^1.0.1",
     "grunt-contrib-connect": "^1.0.2",
@@ -55,9 +61,7 @@
     "mocha": "^3.1.2",
     "proxyquire": "^1.5.0",
     "serve-static": "^1.9.3",
-    "sinon": "^1.17.3",
-    "axe-core": "^2.2.1"
+    "sinon": "^1.17.3"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }
