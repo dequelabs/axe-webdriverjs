@@ -13,7 +13,7 @@ Install [Node.js](https://docs.npmjs.com/getting-started/installing-node) if you
 
 > Download and install any necessary browser drivers on your machine's PATH. [More on Webdriver setup](https://seleniumhq.github.io/docs/wd.html).
 
-Install Selenium Webdriver: `npm install selenium-webdriver`
+Install Selenium Webdriver: `npm install selenium-webdriver --no-save`
 
 Install axe-webdriverjs and its dependencies: `npm install axe-webdriverjs`
 
