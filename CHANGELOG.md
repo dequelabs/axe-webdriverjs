@@ -6,6 +6,14 @@ All notable changes to this project will be documented in this file.
 
 <!-- ## [Unreleased] -->
 
+## [1.1.5] - 2017-09-19
+### Changed
+- Update to axe-core 2.4.1, include in dependencies
+
+## [1.1.2] - 2017-06-14
+### Changed
+- Update to axe-core 2.3.0 to work with Firefox webdriver
+
 ## [1.1.1] - 2017-05-20
 ### Changed
 - Remove warn file on install
