@@ -76,6 +76,39 @@ describe('Builder', function () {
 		});
 	});
 
+	describe('disableRules', function () {
+		it('should properly populate _options.rules with the provided parameter', function () {
+			var builder = new Builder();
+			var colorRule = 'color-contrast';
+			var landmarkRule = 'landmark';
+			var expectedInternalState = {};
+
+			builder.disableRules(colorRule);
+			expectedInternalState[colorRule] = {
+				enabled: false
+			};
+			assert.deepEqual(builder._options.rules, expectedInternalState);
+
+			builder.disableRules([colorRule, landmarkRule]);
+			expectedInternalState[landmarkRule] = {
+				enabled: false
+			};
+			assert.deepEqual(builder._options.rules, expectedInternalState);
+
+			builder.disableRules(colorRule);
+			expectedInternalState = {
+				"color-contrast": {
+					enabled: false
+				}
+			};
+			assert.deepEqual(builder._options.rules, expectedInternalState);
+		});
+
+		it('should return itself', function () {
+			assert.instanceOf(new Builder().disableRules('color-contrast'), Builder);
+		});
+	});
+
 	describe('configure', function () {
 		it('should take a config object to customize aXe', function (done) {
 			var catsConfig = {

@@ -112,6 +112,24 @@ AxeBuilder(driver)
   .withTags(['wcag2a', 'wcag2aa']);
 ```
 
+### AxeBuilder#disableRules(rules:Mixed)
+
+Skips verification of the rules provided.  Accepts a String of a single rule ID or an Array of multiple rule IDs. **Subsequent calls to `AxeBuilder#options`, `AxeBuilder#disableRules` will override specified options.**
+
+```javascript
+AxeBuilder(driver)
+  .disableRules('color-contrast');
+```
+
+or use it combined with some specified tags:
+
+```javascript
+AxeBuilder(driver)
+  .withTags(['wcag2a', 'wcag2aa'])
+  .disableRules('color-contrast');
+```
+
+
 ### AxeBuilder#configure(config:Object)
 
 Inject an aXe configuration object to modify the ruleset before running Analyze. Subsequent calls to this
