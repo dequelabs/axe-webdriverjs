@@ -13,7 +13,7 @@ Install [Node.js](https://docs.npmjs.com/getting-started/installing-node) if you
 
 > Download and install any necessary browser drivers on your machine's PATH. [More on Webdriver setup](https://seleniumhq.github.io/docs/wd.html).
 
-Install Selenium Webdriver: `npm install selenium-webdriver`
+Install Selenium Webdriver: `npm install selenium-webdriver --no-save`
 
 Install axe-webdriverjs and its dependencies: `npm install axe-webdriverjs`
 
@@ -111,6 +111,24 @@ AxeBuilder(driver)
 AxeBuilder(driver)
   .withTags(['wcag2a', 'wcag2aa']);
 ```
+
+### AxeBuilder#disableRules(rules:Mixed)
+
+Skips verification of the rules provided.  Accepts a String of a single rule ID or an Array of multiple rule IDs. **Subsequent calls to `AxeBuilder#options`, `AxeBuilder#disableRules` will override specified options.**
+
+```javascript
+AxeBuilder(driver)
+  .disableRules('color-contrast');
+```
+
+or use it combined with some specified tags:
+
+```javascript
+AxeBuilder(driver)
+  .withTags(['wcag2a', 'wcag2aa'])
+  .disableRules('color-contrast');
+```
+
 
 ### AxeBuilder#configure(config:Object)
 
