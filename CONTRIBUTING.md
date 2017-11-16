@@ -85,18 +85,17 @@ axe-webdriverjs runs tests using Selenium Webdriver 3, which requires Node 6.9.0
 Once you have Node.js installed, from the repository root, do the following:
 
 ```
-npm install axe-core
 npm install
 ```
 
 To run tests:
 
 ```
-grunt test
+npm test
 ```
 
 To build the package:
 
 ```
-grunt build
+npm run build
 ```

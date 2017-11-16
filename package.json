@@ -43,7 +43,8 @@
     "webdriverjs"
   ],
   "scripts": {
-    "test": "grunt test"
+    "test": "grunt test",
+    "build": "grunt build"
   },
   "peerDependencies": {
     "selenium-webdriver": ">= 2.53.1"
@@ -63,6 +64,7 @@
     "sinon": "^1.17.3"
   },
   "dependencies": {
-    "axe-core": "^2.4.1"
+    "axe-core": "^2.4.1",
+    "selenium-webdriver": ">= 2.53.1"
   }
 }
