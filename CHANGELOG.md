@@ -1,3 +1,20 @@
+<a name="1.2.0"></a>
+# [1.2.0](https://github.com/dequelabs/axe-webdriverjs/compare/v1.1.4...v1.2.0) (2017-11-16)
+
+
+### Bug Fixes
+
+* Add seleniuv-webdriver to package.json ([#45](https://github.com/dequelabs/axe-webdriverjs/issues/45)) ([918f61c](https://github.com/dequelabs/axe-webdriverjs/commit/918f61c))
+* replace axe-core dependency, bump to 1.1.5 ([059d18d](https://github.com/dequelabs/axe-webdriverjs/commit/059d18d))
+* replace axe-core dependency, bump to 1.1.5 ([275819a](https://github.com/dequelabs/axe-webdriverjs/commit/275819a))
+
+
+### Features
+
+* Add disableRules method for disabling individual rules ([3833c59](https://github.com/dequelabs/axe-webdriverjs/commit/3833c59))
+
+
+
 # Change Log
 
 <!-- Release notes authoring guidelines: http://keepachangelog.com/ -->
