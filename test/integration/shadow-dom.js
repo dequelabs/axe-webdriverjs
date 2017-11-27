@@ -13,6 +13,7 @@ describe('shadow-dom.html', function () {
 	var driver;
 	before(function (done) {
 		driver = runWebdriver();
+		driver.manage().timeouts().setScriptTimeout(500);
 		driver
 			.get('http://' + host + ':9876/test/fixtures/shadow-dom.html')
 			.then(function () {
@@ -29,8 +30,9 @@ describe('shadow-dom.html', function () {
 	it('should find violations', function (done) {
 		AxeBuilder(driver)
 			.analyze(function (results) {
-				assert.lengthOf(results.violations, 1);
+				assert.lengthOf(results.violations, 2);
 				assert.equal(results.violations[0].id, 'aria-roles');
+				assert.equal(results.violations[1].id, 'aria-valid-attr');
 				done();
 			});
 	});
