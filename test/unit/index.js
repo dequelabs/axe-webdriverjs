@@ -308,29 +308,5 @@ describe('Builder', function () {
 					done();
 				});
 		});
-
-		it('should catch errors', function (done) {
-			var config = {};
-			var Builder = proxyquire('../../lib/index', {
-				'./inject': function (driver, source, config, cb) {
-					cb(null, 'source-code');
-				}
-			});
-
-			new Builder({
-					executeAsyncScript: function (callback, context, options) {
-						return {
-							then: function (cb) {
-								throw new Error('oops!');
-							}
-						};
-					}
-				})
-				.analyze()
-				.catch(function(error) {
-					assert.equal(error.message, 'oops!');
-					done();
-				});
-		});
 	});
 });
