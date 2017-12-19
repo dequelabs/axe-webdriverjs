@@ -1,3 +1,12 @@
+<a name="1.2.1"></a>
+## [1.2.1](https://github.com/dequelabs/axe-webdriverjs/compare/v1.2.0...v1.2.1) (2017-12-19)
+
+
+### Features
+
+* Add axe-core 2.6.0
+
+
 <a name="1.2.0"></a>
 # [1.2.0](https://github.com/dequelabs/axe-webdriverjs/compare/v1.1.4...v1.2.0) (2017-11-16)
 

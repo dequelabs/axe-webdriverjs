@@ -29,7 +29,10 @@ describe('outer-configure-frame.html', function () {
 
 	it('should find configured violations in all frames', function (done) {
 		AxeBuilder(driver)
-			.options({rules: {'html-lang-valid': {'enabled': false}}})
+			.options({rules: {
+				'html-lang-valid': {'enabled': false},
+				'landmark-one-main': {'enabled': false}
+			}})
 			.configure(json)
 			.analyze(function (results) {
 				assert.equal(results.violations[0].id, 'dylang');
