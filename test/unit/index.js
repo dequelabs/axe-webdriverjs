@@ -226,7 +226,7 @@ describe('Builder', function () {
 
 		});
 
-		it('should call axe.a11yCheck with given parameters', function (done) {
+		it('should call axe.run with given parameters', function (done) {
 			var config = {};
 			var Builder = proxyquire('../../lib/index', {
 				'./inject': function (driver, source, config, cb) {
@@ -252,6 +252,59 @@ describe('Builder', function () {
 				.options({ foo: 'bar' })
 				.analyze(function (results) {
 					assert.equal(results, 'results');
+					done();
+				});
+		});
+
+		it('should pass results to .then() instead of a callback', function (done) {
+			var config = {};
+			var Builder = proxyquire('../../lib/index', {
+				'./inject': function (driver, source, config, cb) {
+					cb(null, 'source-code');
+				}
+			});
+
+			new Builder({
+					executeAsyncScript: function (callback, context, options) {
+						return {
+							then: function (cb) {
+								cb('results');
+							}
+						};
+					}
+				})
+				.analyze()
+				.then(function (results) {
+					assert.equal(results, 'results');
+					done();
+				});
+		});
+
+		it('should execute callback before .then()', function (done) {
+			var config = {};
+			var Builder = proxyquire('../../lib/index', {
+				'./inject': function (driver, source, config, cb) {
+					cb(null, 'source-code');
+				}
+			});
+			var called = false;
+
+			new Builder({
+					executeAsyncScript: function (callback, context, options) {
+						return {
+							then: function (cb) {
+								cb('results');
+							}
+						};
+					}
+				})
+				.analyze(function (results) {
+					assert.equal(results, 'results');
+					assert.equal(called, false);
+					called = true;
+				})
+				.then(function (results) {
+					assert.equal(called, true);
 					done();
 				});
 		});
