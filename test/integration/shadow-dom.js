@@ -15,7 +15,7 @@ describe('shadow-dom.html', function () {
 	var driver;
 	before(function (done) {
 		driver = runWebdriver();
-		driver.manage().timeouts().setScriptTimeout(500);
+		driver.manage().timeouts().setScriptTimeout(10000);
 		driver
 			.get('http://' + host + ':9876/test/fixtures/shadow-dom.html')
 			.then(function () {
