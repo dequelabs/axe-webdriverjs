@@ -151,11 +151,21 @@ AxeBuilder(driver)
 
 ### AxeBuilder#analyze(callback:Function)
 
-Performs analysis and passes the result object to the provided function.  **Does not chain as the operation is asynchronous**
+Performs analysis and passes the result object to the provided callback function or promise function.  **Does not chain as the operation is asynchronous**
 
 ```javascript
 AxeBuilder(driver)
   .analyze(function (results) {
+    console.log(results);
+  });
+```
+
+Using the returned promise (optional):
+
+```javascript
+AxeBuilder(driver)
+  .analyze()
+  .then(function (results) {
     console.log(results);
   });
 ```
