@@ -1,3 +1,19 @@
+<a name="1.3.0"></a>
+## [1.3.0](https://github.com/dequelabs/axe-webdriverjs/compare/v1.2.1...v1.3.0) (2018-1-18)
+
+
+### Features
+
+* fix: Ensure meaningful driver context when axe fails in iframe
+* feat: use axe.run with optional promises
+* feat: update to axe-core version 2.6.1
+
+
+### Fixes
+
+* fix: allow errors to be caught by mocha
+
+
 <a name="1.2.1"></a>
 ## [1.2.1](https://github.com/dequelabs/axe-webdriverjs/compare/v1.2.0...v1.2.1) (2017-12-19)
 
