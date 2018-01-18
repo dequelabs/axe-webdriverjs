@@ -1,3 +1,12 @@
+<a name="2.0.0-alpha.1"></a>
+## [2.0.0-alpha.1](https://github.com/dequelabs/axe-webdriverjs/compare/v1.3.0...v2.0.0-alpha.1) (2018-1-18)
+
+
+### Features
+
+* Add axe-core 3.0.0-alpha.9, including Shadow DOM
+
+
 <a name="1.3.0"></a>
 ## [1.3.0](https://github.com/dequelabs/axe-webdriverjs/compare/v1.2.1...v1.3.0) (2018-1-18)
 

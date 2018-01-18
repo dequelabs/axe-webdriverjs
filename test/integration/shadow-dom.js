@@ -44,6 +44,10 @@ describe('shadow-dom.html', function () {
 	it('should find violations', function (done) {
 		if (shadowSupported) {
 			AxeBuilder(driver)
+				.options({rules: {
+					'landmark-one-main': {'enabled': false},
+					'region': {'enabled': false}
+				}})
 				.analyze(function (results) {
 					assert.lengthOf(results.violations, 2);
 					assert.equal(results.violations[0].id, 'aria-roles');

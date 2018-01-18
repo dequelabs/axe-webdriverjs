@@ -30,6 +30,8 @@ describe('outer-configure-frame.html', function () {
 	it('should find configured violations in all frames', function (done) {
 		AxeBuilder(driver)
 			.options({rules: {
+				'landmark-one-main': {'enabled': false},
+				'region': {'enabled': false},
 				'html-lang-valid': {'enabled': false}
 			}})
 			.configure(json)
