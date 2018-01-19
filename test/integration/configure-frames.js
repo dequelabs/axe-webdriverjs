@@ -14,7 +14,7 @@ describe('outer-configure-frame.html', function () {
 	var driver;
 	before(function (done) {
 		driver = runWebdriver();
-		driver.manage().timeouts().setScriptTimeout(500);
+		driver.manage().timeouts().setScriptTimeout(10000);
 
 		driver
 			.get('http://' + host + ':9876/test/fixtures/outer-configure-frame.html')
@@ -30,8 +30,9 @@ describe('outer-configure-frame.html', function () {
 	it('should find configured violations in all frames', function (done) {
 		AxeBuilder(driver)
 			.options({rules: {
-				'html-lang-valid': {'enabled': false},
-				'landmark-one-main': {'enabled': false}
+				'landmark-one-main': {'enabled': false},
+				'region': {'enabled': false},
+				'html-lang-valid': {'enabled': false}
 			}})
 			.configure(json)
 			.analyze(function (results) {
