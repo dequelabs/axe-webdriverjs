@@ -31,6 +31,7 @@ describe('outer-configure-frame.html', function () {
 		AxeBuilder(driver)
 			.options({rules: {
 				'landmark-one-main': {'enabled': false},
+				'page-has-heading-one': {'enabled': false},
 				'region': {'enabled': false},
 				'html-lang-valid': {'enabled': false}
 			}})
