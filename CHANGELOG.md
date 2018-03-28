@@ -1,3 +1,11 @@
+<a name="2.0.0"></a>
+# [2.0.0](https://github.com/dequelabs/axe-webdriverjs/compare/v2.0.0-alpha.1...v2.0.0) (2018-03-28)
+
+### Features
+
+* Update to [axe-core 3.0.0](https://github.com/dequelabs/axe-core/releases/tag/v3.0.0)
+
+
 <a name="2.0.0-alpha.1"></a>
 ## [2.0.0-alpha.1](https://github.com/dequelabs/axe-webdriverjs/compare/v1.3.0...v2.0.0-alpha.1) (2018-1-18)
 
