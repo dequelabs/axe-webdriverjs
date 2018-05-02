@@ -50,7 +50,7 @@
     "selenium-webdriver": ">= 2.53.1"
   },
   "devDependencies": {
-    "chai": "^3.0.0",
+    "chai": "^4.1.2",
     "grunt": "^1.0.1",
     "grunt-contrib-connect": "^1.0.2",
     "grunt-contrib-jshint": "^1.0.0",
@@ -58,11 +58,11 @@
     "grunt-mocha-istanbul": "^5.0.2",
     "grunt-mocha-test": "^0.13.2",
     "istanbul": "^0.4.5",
-    "mocha": "^3.1.2",
-    "proxyquire": "^1.5.0",
-    "selenium-webdriver": "^2.53.3",
+    "mocha": "^5.1.0",
+    "proxyquire": "^2.0.1",
+    "selenium-webdriver": "^3.6.0",
     "serve-static": "^1.9.3",
-    "sinon": "^1.17.3"
+    "sinon": "^4.5.0"
   },
   "dependencies": {
     "axe-core": "^3.0.0"
