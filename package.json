@@ -62,7 +62,7 @@
     "proxyquire": "^2.0.1",
     "selenium-webdriver": "^3.6.0",
     "serve-static": "^1.9.3",
-    "sinon": "^5.0.5"
+    "sinon": "^6.0.0"
   },
   "dependencies": {
     "axe-core": "^3.0.0"
