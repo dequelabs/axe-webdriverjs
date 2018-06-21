@@ -3,7 +3,7 @@
   "description": "Provides a method to inject and analyze web pages using aXe",
   "version": "2.0.0",
   "license": "MPL-2.0",
-  "main": "lib/index.js",
+  "main": "dist/index.js",
   "contributors": [
     {
       "name": "Dylan Barrell",
@@ -50,7 +50,9 @@
     "test:unit": "mocha test/unit/*.js",
     "test:integration": "mocha test/integration/*.js",
     "test:sauce": "mocha test/sauce/*.js",
-    "coverage": "nyc npm run test:unit"
+    "coverage": "nyc npm run test:unit",
+    "build": "babel lib --out-dir dist",
+    "prepublishOnly": "npm run build"
   },
   "lint-staged": {
     "*.js": [
@@ -63,6 +65,10 @@
     "selenium-webdriver": ">= 2.53.1"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.3",
+    "babel-preset-env": "^1.7.0",
     "chai": "^4.1.2",
     "eslint": "^4.19.1",
     "eslint-config-prettier": "^2.9.0",
@@ -89,6 +95,7 @@
     "arrowParens": "avoid"
   },
   "eslintConfig": {
+    "parser": "babel-eslint",
     "extends": [
       "eslint:recommended",
       "prettier"

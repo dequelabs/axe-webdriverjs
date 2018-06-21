@@ -1,7 +1,7 @@
 var assert = require('chai').assert;
 var proxyquire = require('proxyquire');
-
 var Builder = require('../../lib/index');
+
 describe('Builder', function() {
   describe('constructor', function() {
     it('should assign driver to this._driver', function() {
@@ -137,8 +137,8 @@ describe('Builder', function() {
         }
       };
       var Builder = proxyquire('../../lib/index', {
-        './inject': function(driver, source, config, cb) {
-          cb(null, 'source-code');
+        './axe-injector': function() {
+          return { inject: cb => cb(null, 'source-code') };
         }
       });
 
@@ -178,8 +178,8 @@ describe('Builder', function() {
     it('should normalize context', function(done) {
       var normalized = false;
       var Builder = proxyquire('../../lib/index', {
-        './inject': function(driver, source, config, cb) {
-          cb(null, 'source-code');
+        './axe-injector': function() {
+          return { inject: cb => cb(null, 'source-code') };
         },
         './normalize-context': function(include, exclude) {
           normalized = true;
@@ -210,20 +210,23 @@ describe('Builder', function() {
     it('should inject into the page under test', function() {
       var called = false;
       var Builder = proxyquire('../../lib/index', {
-        './inject': function(driver, source, config, cb) {
-          assert.equal(driver, 'driver');
-          assert.isFunction(cb);
-          called = true;
+        './axe-injector': function() {
+          return {
+            inject(cb) {
+              called = true;
+              cb(null, 'source-code');
+            }
+          };
         }
       });
-      new Builder('driver').analyze();
+      new Builder({ executeAsyncScript: () => Promise.resolve() }).analyze();
       assert.isTrue(called);
     });
 
     it('should call axe.run with given parameters', function(done) {
       var Builder = proxyquire('../../lib/index', {
-        './inject': function(driver, source, config, cb) {
-          cb(null, 'source-code');
+        './axe-injector': function() {
+          return { inject: cb => cb(null, 'source-code') };
         },
         './normalize-context': function() {
           return 'normalized';
@@ -251,8 +254,8 @@ describe('Builder', function() {
 
     it('should pass results to .then() instead of a callback', function(done) {
       var Builder = proxyquire('../../lib/index', {
-        './inject': function(driver, source, config, cb) {
-          cb(null, 'source-code');
+        './axe-injector': function() {
+          return { inject: cb => cb(null, 'source-code') };
         }
       });
 
@@ -274,8 +277,8 @@ describe('Builder', function() {
 
     it('should execute callback before .then()', function(done) {
       var Builder = proxyquire('../../lib/index', {
-        './inject': function(driver, source, config, cb) {
-          cb(null, 'source-code');
+        './axe-injector': function() {
+          return { inject: cb => cb(null, 'source-code') };
         }
       });
       var called = false;

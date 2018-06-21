@@ -1,9 +1,4 @@
 node_modules
 output
-test
-Gruntfile.js
-typings
-.editorconfig
-.travis.yml
-.gitignore
-CONTRIBUTING.md
+.nyc_output/
+coverage/
