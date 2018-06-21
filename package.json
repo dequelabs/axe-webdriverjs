@@ -74,7 +74,6 @@
     "prettier": "^1.13.5",
     "proxyquire": "^2.0.1",
     "selenium-webdriver": "^3.6.0",
-    "serve-handler": "^3.2.2",
     "sinon": "^6.0.0"
   },
   "dependencies": {
