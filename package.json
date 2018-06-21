@@ -49,7 +49,8 @@
     "test": "mocha test/unit/*.js test/integration/*.js",
     "test:unit": "mocha test/unit/*.js",
     "test:integration": "mocha test/integration/*.js",
-    "test:sauce": "mocha test/sauce/*.js"
+    "test:sauce": "mocha test/sauce/*.js",
+    "coverage": "nyc npm run test:unit"
   },
   "lint-staged": {
     "*.js": [
@@ -104,6 +105,12 @@
           "mocha": true
         }
       }
+    ]
+  },
+  "nyc": {
+    "reporter": [
+      "text",
+      "html"
     ]
   }
 }
