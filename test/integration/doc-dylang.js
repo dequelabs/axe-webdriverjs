@@ -7,8 +7,7 @@ var runWebdriver = require('../run-webdriver'),
 	json = require('../fixtures/custom-rule-config.json'),
 	assert = require('chai').assert,
 	AxeBuilder = require('../../lib'),
-	host = 'localhost',
-	fs = require('fs');
+	host = 'localhost'
 
 var axe = require('axe-core');
 

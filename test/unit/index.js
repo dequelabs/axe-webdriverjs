@@ -119,12 +119,12 @@ describe('Builder', function () {
 					],
 					'evaluate': "function (node, options) {\n        var lang = (node.getAttribute(\"lang\") || \"\").trim().toLowerCase();\n        var xmlLang = (node.getAttribute(\"xml:lang\") || \"\").trim().toLowerCase();\n        var invalid = [];\n        (options || []).forEach(function(cc) {\n          cc = cc.toLowerCase();\n          if (lang && (lang === cc || lang.indexOf(cc.toLowerCase() + \"-\") === 0)) {\n            lang = null;\n          }\n          if (xmlLang && (xmlLang === cc || xmlLang.indexOf(cc.toLowerCase() + \"-\") === 0)) {\n            xmlLang = null;\n          }\n        });\n        if (xmlLang) {\n          invalid.push('xml:lang=\"' + xmlLang + '\"');\n        }\n        if (lang) {\n          invalid.push('lang=\"' + lang + '\"');\n        }\n        if (invalid.length) {\n          this.data(invalid);\n          return true;\n        }\n        return false;\n      }",
 					"metadata": {
-					    "impact": "critical",
-					    "messages": {
-					      "pass": "The lang attribute is cats",
-					      "fail": "The lang attribute can only be cats"
-					    }
-					  }
+					"impact": "critical",
+					"messages": {
+					"pass": "The lang attribute is cats",
+					"fail": "The lang attribute can only be cats"
+					}
+					}
 				},
 				'rules': {
 					'id': 'cats',
@@ -132,13 +132,12 @@ describe('Builder', function () {
 					'selector': 'html',
 					'any': ['cats'],
 					'metadata': {
-						"description": "Ensures lang attributes have the value of cats",
-					    "help": "lang attribute must have the value of cats",
-					    "helpUrl": "https://example.com/cats"
-				    }
+					"description": "Ensures lang attributes have the value of cats",
+					"help": "lang attribute must have the value of cats",
+					"helpUrl": "https://example.com/cats"
+					}
 				}
 			};
-			var config = {};
 			var Builder = proxyquire('../../lib/index', {
 				'./inject': function (driver, source, config, cb) {
 					cb(null, 'source-code');
@@ -180,7 +179,6 @@ describe('Builder', function () {
 	describe('analyze', function () {
 		it('should normalize context', function (done) {
 			var normalized = false;
-			var config = {};
 			var Builder = proxyquire('../../lib/index', {
 				'./inject': function (driver, source, config, cb) {
 					cb(null, 'source-code');
@@ -213,7 +211,6 @@ describe('Builder', function () {
 
 		it('should inject into the page under test', function () {
 			var called = false;
-			var config = {};
 			var Builder = proxyquire('../../lib/index', {
 				'./inject': function (driver, source, config, cb) {
 					assert.equal(driver, 'driver');
@@ -227,12 +224,11 @@ describe('Builder', function () {
 		});
 
 		it('should call axe.run with given parameters', function (done) {
-			var config = {};
 			var Builder = proxyquire('../../lib/index', {
 				'./inject': function (driver, source, config, cb) {
 					cb(null, 'source-code');
 				},
-				'./normalize-context': function (include, exclude) {
+				'./normalize-context': function () {
 					return 'normalized';
 				}
 			});
@@ -257,7 +253,6 @@ describe('Builder', function () {
 		});
 
 		it('should pass results to .then() instead of a callback', function (done) {
-			var config = {};
 			var Builder = proxyquire('../../lib/index', {
 				'./inject': function (driver, source, config, cb) {
 					cb(null, 'source-code');
@@ -265,7 +260,7 @@ describe('Builder', function () {
 			});
 
 			new Builder({
-					executeAsyncScript: function (callback, context, options) {
+					executeAsyncScript: function () {
 						return {
 							then: function (cb) {
 								cb('results');
@@ -281,7 +276,6 @@ describe('Builder', function () {
 		});
 
 		it('should execute callback before .then()', function (done) {
-			var config = {};
 			var Builder = proxyquire('../../lib/index', {
 				'./inject': function (driver, source, config, cb) {
 					cb(null, 'source-code');
@@ -290,7 +284,7 @@ describe('Builder', function () {
 			var called = false;
 
 			new Builder({
-					executeAsyncScript: function (callback, context, options) {
+					executeAsyncScript: function () {
 						return {
 							then: function (cb) {
 								cb('results');
@@ -303,7 +297,7 @@ describe('Builder', function () {
 					assert.equal(called, false);
 					called = true;
 				})
-				.then(function (results) {
+				.then(function () {
 					assert.equal(called, true);
 					done();
 				});

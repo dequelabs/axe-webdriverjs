@@ -43,28 +43,37 @@
     "webdriverjs"
   ],
   "scripts": {
-    "test": "grunt test",
-    "build": "grunt build"
+    "lint": "eslint './lib/**/*.js' './test/**/*.js' --fix"
   },
   "peerDependencies": {
     "selenium-webdriver": ">= 2.53.1"
   },
   "devDependencies": {
     "chai": "^4.1.2",
-    "grunt": "^1.0.1",
-    "grunt-contrib-connect": "^1.0.2",
-    "grunt-contrib-jshint": "^1.0.0",
-    "grunt-contrib-watch": "^1.0.0",
-    "grunt-mocha-istanbul": "^5.0.2",
-    "grunt-mocha-test": "^0.13.2",
-    "istanbul": "^0.4.5",
+    "eslint": "^4.19.1",
+    "http-server": "^0.11.1",
     "mocha": "^5.1.0",
+    "nyc": "^12.0.2",
     "proxyquire": "^2.0.1",
     "selenium-webdriver": "^3.6.0",
-    "serve-static": "^1.9.3",
     "sinon": "^6.0.0"
   },
   "dependencies": {
     "axe-core": "^3.0.0"
+  },
+  "eslintConfig": {
+    "extends": "eslint:recommended",
+    "env": {
+      "node": true,
+      "es6": true
+    },
+    "overrides": [
+      {
+        "files": "test/**/*.js",
+        "env": {
+          "mocha": true
+        }
+      }
+    ]
   }
 }

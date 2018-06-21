@@ -20,16 +20,18 @@ describe('shadow-dom.html', function () {
 			.get('http://' + host + ':9876/test/fixtures/shadow-dom.html')
 			.then(function () {
 				driver.executeAsyncScript(function(callback) {
+					/* eslint-env browser */
 					var script = document.createElement('script');
 					script.innerHTML = 'var shadowSupport = document.body && typeof document.body.attachShadow === \'function\';';
 					document.documentElement.appendChild(script);
+					// eslint-disable-next-line no-undef
 					callback(shadowSupport);
 				})
 				.then(function(shadowSupport) {
 					shadowSupported = shadowSupport;
 					done();
 				})
-				.catch(function(error) {
+				.catch(function() {
 					done();
 				});
 			});
@@ -56,6 +58,7 @@ describe('shadow-dom.html', function () {
 					done();
 				});
 		} else {
+			// eslint-disable-next-line no-console
 			console.log('Test skipped, Shadow DOM not supported');
 			done();
 		}
