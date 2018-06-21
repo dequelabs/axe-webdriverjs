@@ -45,7 +45,11 @@
   "scripts": {
     "lint": "eslint './lib/**/*.js' './test/**/*.js' --fix",
     "fmt": "prettier --write './lib/**/*.js' './test/**/*.js'",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "test": "mocha test/unit/*.js test/integration/*.js",
+    "test:unit": "mocha test/unit/*.js",
+    "test:integration": "mocha test/integration/*.js",
+    "test:sauce": "mocha test/sauce/*.js"
   },
   "lint-staged": {
     "*.js": [
@@ -69,6 +73,7 @@
     "prettier": "^1.13.5",
     "proxyquire": "^2.0.1",
     "selenium-webdriver": "^3.6.0",
+    "serve-handler": "^3.2.2",
     "sinon": "^6.0.0"
   },
   "dependencies": {
@@ -84,7 +89,10 @@
     "arrowParens": "avoid"
   },
   "eslintConfig": {
-    "extends": ["eslint:recommended", "prettier"],
+    "extends": [
+      "eslint:recommended",
+      "prettier"
+    ],
     "env": {
       "node": true,
       "es6": true

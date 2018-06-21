@@ -1,8 +1,10 @@
-var runWebdriver = require('../run-webdriver'),
-  assert = require('chai').assert,
-  host = 'localhost',
-  json = require('../fixtures/custom-rule-config.json'),
-  AxeBuilder = require('../../lib');
+var runWebdriver = require('../run-webdriver');
+var assert = require('chai').assert;
+var host = 'localhost';
+var json = require('../fixtures/custom-rule-config.json');
+var AxeBuilder = require('../../lib');
+var path = require('path');
+var { createServer } = require('http-server');
 
 if (process.env.REMOTE_TESTSERVER_HOST) {
   host = process.env.REMOTE_TESTSERVER_HOST;
@@ -11,6 +13,7 @@ if (process.env.REMOTE_TESTSERVER_HOST) {
 describe('outer-configure-frame.html', function() {
   this.timeout(10000);
 
+  var server;
   var driver;
   before(function(done) {
     driver = runWebdriver();
@@ -19,14 +22,26 @@ describe('outer-configure-frame.html', function() {
       .timeouts()
       .setScriptTimeout(10000);
 
-    driver
-      .get('http://' + host + ':9876/test/fixtures/outer-configure-frame.html')
-      .then(function() {
-        done();
-      });
+    server = createServer({
+      root: path.resolve(__dirname, '../..'),
+      cache: -1
+    });
+    server.listen(9876, err => {
+      if (err) {
+        return done(err);
+      }
+      driver
+        .get(
+          'http://' + host + ':9876/test/fixtures/outer-configure-frame.html'
+        )
+        .then(function() {
+          done();
+        });
+    });
   });
 
   after(function() {
+    server.close();
     driver.quit();
   });
 

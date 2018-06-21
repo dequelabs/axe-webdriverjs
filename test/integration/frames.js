@@ -1,7 +1,9 @@
-var runWebdriver = require('../run-webdriver'),
-  assert = require('chai').assert,
-  host = 'localhost',
-  AxeBuilder = require('../../lib');
+var runWebdriver = require('../run-webdriver');
+var assert = require('chai').assert;
+var host = 'localhost';
+var AxeBuilder = require('../../lib');
+var path = require('path');
+var { createServer } = require('http-server');
 
 if (process.env.REMOTE_TESTSERVER_HOST) {
   host = process.env.REMOTE_TESTSERVER_HOST;
@@ -11,6 +13,7 @@ describe('outer-frame.html', function() {
   this.timeout(10000);
 
   var driver;
+  var server;
   before(function(done) {
     driver = runWebdriver();
     driver
@@ -18,14 +21,24 @@ describe('outer-frame.html', function() {
       .timeouts()
       .setScriptTimeout(500);
 
-    driver
-      .get('http://' + host + ':9876/test/fixtures/outer-frame.html')
-      .then(function() {
-        done();
-      });
+    server = createServer({
+      root: path.resolve(__dirname, '../..'),
+      cache: -1
+    });
+    server.listen(9876, err => {
+      if (err) {
+        return done(err);
+      }
+      driver
+        .get('http://' + host + ':9876/test/fixtures/outer-frame.html')
+        .then(function() {
+          done();
+        });
+    });
   });
 
   after(function() {
+    server.close();
     driver.quit();
   });
 
