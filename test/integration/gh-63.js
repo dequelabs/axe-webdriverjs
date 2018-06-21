@@ -1,5 +1,5 @@
 var runWebdriver = require('../run-webdriver');
-var AxeBuilder = require('../..');
+var AxeBuilder = require('../../lib');
 
 describe('gh-63: buy.garmin.com/en-US/US/p/591046', function() {
   this.timeout('1m');
