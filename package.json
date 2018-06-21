@@ -43,10 +43,10 @@
     "webdriverjs"
   ],
   "scripts": {
-    "lint": "eslint './lib/**/*.js' './test/**/*.js' --fix",
+    "lint": "eslint './lib/**/*.js' './test/**/*.js'",
     "fmt": "prettier --write './lib/**/*.js' './test/**/*.js'",
     "precommit": "lint-staged",
-    "test": "mocha test/unit/*.js test/integration/*.js",
+    "test": "npm run test:unit && npm run test:integration",
     "test:unit": "mocha test/unit/*.js",
     "test:integration": "mocha test/integration/*.js",
     "test:sauce": "mocha test/sauce/*.js",
