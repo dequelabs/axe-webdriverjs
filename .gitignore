@@ -4,3 +4,4 @@ output
 npm-shrinkwrap.json
 .nyc_output/
 coverage/
+dist
