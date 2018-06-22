@@ -42,6 +42,9 @@
     "webdriver",
     "webdriverjs"
   ],
+  "engines": {
+    "node": ">=4"
+  },
   "scripts": {
     "lint": "eslint './lib/**/*.js' './test/**/*.js'",
     "fmt": "prettier --write './lib/**/*.js' './test/**/*.js'",
