@@ -1,3 +1,18 @@
+# Change Log
+
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+<a name="2.0.1"></a>
+## [2.0.1](https://github.com/dequelabs/axe-webdriverjs/compare/v2.0.0...v2.0.1) (2018-06-25)
+
+
+### Bug Fixes
+
+* move selenium to development deps ([#55](https://github.com/dequelabs/axe-webdriverjs/issues/55)) ([d8c6a0f](https://github.com/dequelabs/axe-webdriverjs/commit/d8c6a0f))
+* Prevent infinitely recursing when injecting into iframes ([#66](https://github.com/dequelabs/axe-webdriverjs/issues/66)) ([591a701](https://github.com/dequelabs/axe-webdriverjs/commit/591a701)), closes [#63](https://github.com/dequelabs/axe-webdriverjs/issues/63)
+
+
+
 <a name="2.0.0"></a>
 # [2.0.0](https://github.com/dequelabs/axe-webdriverjs/compare/v2.0.0-alpha.1...v2.0.0) (2018-03-28)
 
