@@ -1,19 +1,59 @@
 version: 2
 
+defaults: &defaults
+  docker:
+    - image: circleci/node:6-browsers
+  working_directory: ~/axe-webdriverjs
+
 jobs:
-  build:
-    docker:
-      - image: circleci/node:6-browsers
+  dependencies:
+    <<: *defaults
     steps:
-    - checkout
-    - restore_cache:
-        keys:
-          - npm-{{ checksum "package-lock.json" }}
-          - npm
-    - run: npm install
-    - save_cache:
-        key: npm-{{ checksum "package-lock.json" }}
-        paths:
-          - node_modules
-    - run: npm run lint
-    - run: npm run test:unit
+      - checkout
+      - restore_cache:
+          key: v1-npm-cache-{{ checksum "package-lock.json" }}
+      - run: npm install
+      - save_cache:
+          key: v1-npm-cache-{{ checksum "package-lock.json" }}
+          paths:
+            - node_modules
+  unit_tests:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          key: v1-npm-cache-{{ checksum "package-lock.json" }}
+      - run: npm run test:unit
+  lint:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          key: v1-npm-cache-{{ checksum "package-lock.json" }}
+      - run: npm run lint
+  release:
+    <<: *defaults
+    steps:
+      - checkout
+      - run: npm config set "//registry.npmjs.org/:_authToken" $NPM_AUTH
+      - run: npm publish
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - dependencies
+      - unit_tests:
+          requires:
+            - dependencies
+      - lint:
+          requires:
+            - dependencies
+      - release:
+          requires:
+            - dependencies
+            - unit_tests
+            - lint
+          filters:
+            branches:
+              only: master
