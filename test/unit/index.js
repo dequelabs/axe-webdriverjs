@@ -154,7 +154,8 @@ describe('Builder', function() {
         }
       })
         .configure(catsConfig)
-        .analyze(function(results) {
+        .analyze(function(err, results) {
+          assert.isNull(err);
           assert.equal(results, 'results');
           done();
         });
@@ -246,7 +247,8 @@ describe('Builder', function() {
         }
       })
         .options({ foo: 'bar' })
-        .analyze(function(results) {
+        .analyze(function(err, results) {
+          assert.isNull(err);
           assert.equal(results, 'results');
           done();
         });
@@ -292,7 +294,8 @@ describe('Builder', function() {
           };
         }
       })
-        .analyze(function(results) {
+        .analyze(function(err, results) {
+          assert.isNull(err);
           assert.equal(results, 'results');
           assert.equal(called, false);
           called = true;
@@ -301,6 +304,43 @@ describe('Builder', function() {
           assert.equal(called, true);
           done();
         });
+    });
+
+    describe('when `executeAsyncScript` fails', () => {
+      it('should not crash the process', async () => {
+        const builder = new Builder({
+          executeAsyncScript() {
+            return Promise.reject(new Error('boom!'));
+          }
+        });
+
+        let error = null;
+        try {
+          await builder.analyze();
+        } catch (err) {
+          error = err;
+        }
+        assert.ok(error);
+        assert.equal(error.message, 'boom!');
+      });
+
+      describe('given a callback', () => {
+        it('should provide the error', done => {
+          const builder = new Builder({
+            executeAsyncScript() {
+              return Promise.reject(new Error('boom!'));
+            }
+          });
+
+          builder.analyze((err, result) => {
+            assert.isOk(err);
+            assert.isNotOk(result);
+
+            assert.equal(err.message, 'boom!');
+            done();
+          });
+        });
+      });
     });
   });
 });

@@ -53,7 +53,8 @@ describe('doc-dylang.html', function() {
     AxeBuilder(driver, src)
       .configure(json)
       .withRules(['dylang'])
-      .analyze(function(results) {
+      .analyze(function(err, results) {
+        assert.isNull(err);
         assert.lengthOf(results.violations, 1);
         assert.equal(results.violations[0].id, 'dylang');
         assert.notEqual(

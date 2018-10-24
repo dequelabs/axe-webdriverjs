@@ -56,7 +56,8 @@ describe('outer-configure-frame.html', function() {
         }
       })
       .configure(json)
-      .analyze(function(results) {
+      .analyze(function(err, results) {
+        assert.isNull(err);
         assert.equal(results.violations[0].id, 'dylang');
         // the second violation is in a frame
         assert.equal(results.violations[0].nodes.length, 2);
