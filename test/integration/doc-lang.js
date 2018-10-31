@@ -65,7 +65,8 @@ describe('doc-lang.html', function() {
   it('should not find violations when the rule is disabled', function(done) {
     AxeBuilder(driver)
       .options({ rules: { 'html-has-lang': { enabled: false } } })
-      .analyze(function(results) {
+      .analyze()
+      .then(function(results) {
         results.violations.forEach(function(violation) {
           assert.notEqual(violation.id, 'html-has-lang');
         });

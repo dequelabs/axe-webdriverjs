@@ -45,7 +45,8 @@ describe('outer-frame.html', function() {
   it('should find violations', function(done) {
     AxeBuilder(driver)
       .withRules('html-lang-valid')
-      .analyze(function(results) {
+      .analyze()
+      .then(function(results) {
         assert.lengthOf(results.violations, 1, 'violations');
         assert.equal(results.violations[0].id, 'html-lang-valid');
         assert.lengthOf(
@@ -71,7 +72,8 @@ describe('outer-frame.html', function() {
       .include('body')
       .options({ checks: { 'valid-lang': { options: ['bobbert'] } } })
       .withRules('html-lang-valid')
-      .analyze(function(results) {
+      .analyze()
+      .then(function(results) {
         assert.lengthOf(results.violations, 0);
         assert.lengthOf(results.passes, 1);
         done();
@@ -81,7 +83,8 @@ describe('outer-frame.html', function() {
   it('should not find violations when the rule is disabled', function(done) {
     AxeBuilder(driver)
       .options({ rules: { 'html-lang-valid': { enabled: false } } })
-      .analyze(function(results) {
+      .analyze()
+      .then(function(results) {
         results.violations.forEach(function(violation) {
           assert.notEqual(violation.id, 'html-lang-valid');
         });
