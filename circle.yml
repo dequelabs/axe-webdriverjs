@@ -11,10 +11,10 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: v1-npm-cache-{{ checksum "package-lock.json" }}
+          key: v2-npm-cache-{{ checksum "package.json" }}
       - run: npm install
       - save_cache:
-          key: v1-npm-cache-{{ checksum "package-lock.json" }}
+          key: v2-npm-cache-{{ checksum "package.json" }}
           paths:
             - node_modules
   unit_tests:
@@ -22,14 +22,14 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: v1-npm-cache-{{ checksum "package-lock.json" }}
+          key: v2-npm-cache-{{ checksum "package.json" }}
       - run: npm run test:unit
   lint:
     <<: *defaults
     steps:
       - checkout
       - restore_cache:
-          key: v1-npm-cache-{{ checksum "package-lock.json" }}
+          key: v2-npm-cache-{{ checksum "package.json" }}
       - run: npm run lint
   release:
     <<: *defaults
