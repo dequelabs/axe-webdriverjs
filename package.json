@@ -48,7 +48,6 @@
   "scripts": {
     "lint": "eslint './lib/**/*.js' './test/**/*.js'",
     "fmt": "prettier --write './lib/**/*.js' './test/**/*.js'",
-    "precommit": "lint-staged",
     "test": "npm run test:unit && npm run test:integration",
     "test:unit": "mocha test/unit/*.js --require babel-register",
     "test:integration": "mocha test/integration/*.js --require babel-register",
@@ -79,7 +78,7 @@
     "eslint": "^5.0.0",
     "eslint-config-prettier": "^3.0.0",
     "http-server": "^0.11.1",
-    "husky": "^0.14.3",
+    "husky": "^1.0.0",
     "lint-staged": "^8.0.0",
     "mocha": "^5.1.0",
     "nyc": "^12.0.2",
@@ -126,5 +125,10 @@
       "text",
       "html"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
