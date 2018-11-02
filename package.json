@@ -1,9 +1,9 @@
 {
   "name": "axe-webdriverjs",
   "description": "Provides a method to inject and analyze web pages using aXe",
-  "version": "2.0.0",
+  "version": "2.0.2",
   "license": "MPL-2.0",
-  "main": "lib/index.js",
+  "main": "dist/index.js",
   "contributors": [
     {
       "name": "Dylan Barrell",
@@ -42,29 +42,89 @@
     "webdriver",
     "webdriverjs"
   ],
+  "engines": {
+    "node": ">=4"
+  },
   "scripts": {
-    "test": "grunt test",
-    "build": "grunt build"
+    "lint": "eslint './lib/**/*.js' './test/**/*.js'",
+    "fmt": "prettier --write './lib/**/*.js' './test/**/*.js'",
+    "precommit": "lint-staged",
+    "test": "npm run test:unit && npm run test:integration",
+    "test:unit": "mocha test/unit/*.js --require babel-register",
+    "test:integration": "mocha test/integration/*.js --require babel-register",
+    "test:sauce": "mocha test/sauce/*.js --require babel-register",
+    "coverage": "nyc npm run test:unit",
+    "build": "babel lib --out-dir dist",
+    "prepublishOnly": "npm run build",
+    "release": "standard-version"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ]
   },
   "peerDependencies": {
     "selenium-webdriver": ">= 2.53.1"
   },
   "devDependencies": {
-    "chai": "^3.0.0",
-    "grunt": "^1.0.1",
-    "grunt-contrib-connect": "^1.0.2",
-    "grunt-contrib-jshint": "^1.0.0",
-    "grunt-contrib-watch": "^1.0.0",
-    "grunt-mocha-istanbul": "^5.0.2",
-    "grunt-mocha-test": "^0.13.2",
-    "istanbul": "^0.4.5",
-    "mocha": "^3.1.2",
-    "proxyquire": "^1.5.0",
-    "serve-static": "^1.9.3",
-    "sinon": "^1.17.3"
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.3",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0",
+    "chai": "^4.1.2",
+    "eslint": "^5.0.0",
+    "eslint-config-prettier": "^2.9.0",
+    "http-server": "^0.11.1",
+    "husky": "^0.14.3",
+    "lint-staged": "^7.2.0",
+    "mocha": "^5.1.0",
+    "nyc": "^12.0.2",
+    "prettier": "^1.13.5",
+    "proxyquire": "^2.0.1",
+    "selenium-webdriver": "^3.6.0",
+    "sinon": "^6.0.0",
+    "standard-version": "^4.4.0"
   },
   "dependencies": {
     "axe-core": "^3.0.0",
-    "selenium-webdriver": ">= 2.53.1"
+    "babel-runtime": "^6.26.0"
+  },
+  "prettier": {
+    "semi": true,
+    "singleQuote": true,
+    "printWidth": 80,
+    "bracketSpacing": true,
+    "useTabs": false,
+    "trailingComma": "none",
+    "arrowParens": "avoid"
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "extends": [
+      "eslint:recommended",
+      "prettier"
+    ],
+    "env": {
+      "node": true,
+      "es6": true
+    },
+    "overrides": [
+      {
+        "files": "test/**/*.js",
+        "env": {
+          "mocha": true
+        }
+      }
+    ]
+  },
+  "nyc": {
+    "reporter": [
+      "text",
+      "html"
+    ]
   }
 }

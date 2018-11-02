@@ -2,3 +2,6 @@ node_modules
 output
 *.tgz
 npm-shrinkwrap.json
+.nyc_output/
+coverage/
+dist
