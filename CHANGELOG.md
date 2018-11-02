@@ -1,6 +1,7 @@
-# Change Log
+<a name="2.0.2"></a>
+## [2.0.2](https://github.com/dequelabs/axe-webdriverjs/compare/v2.0.1...v2.0.2) (2018-10-24)
 
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
 
 <a name="2.0.1"></a>
 ## [2.0.1](https://github.com/dequelabs/axe-webdriverjs/compare/v2.0.0...v2.0.1) (2018-06-25)
@@ -16,34 +17,32 @@ All notable changes to this project will be documented in this file. See [standa
 <a name="2.0.0"></a>
 # [2.0.0](https://github.com/dequelabs/axe-webdriverjs/compare/v2.0.0-alpha.1...v2.0.0) (2018-03-28)
 
-### Features
-
-* Update to [axe-core 3.0.0](https://github.com/dequelabs/axe-core/releases/tag/v3.0.0)
 
 
 <a name="2.0.0-alpha.1"></a>
-## [2.0.0-alpha.1](https://github.com/dequelabs/axe-webdriverjs/compare/v1.3.0...v2.0.0-alpha.1) (2018-1-18)
+# [2.0.0-alpha.1](https://github.com/dequelabs/axe-webdriverjs/compare/v1.3.0...v2.0.0-alpha.1) (2018-01-19)
 
 
 ### Features
 
-* Add axe-core 3.0.0-alpha.9, including Shadow DOM
+* upgrade to axe-core 3.0.0-alpha.9 ([#46](https://github.com/dequelabs/axe-webdriverjs/issues/46)) ([097a012](https://github.com/dequelabs/axe-webdriverjs/commit/097a012))
+
 
 
 <a name="1.3.0"></a>
-## [1.3.0](https://github.com/dequelabs/axe-webdriverjs/compare/v1.2.1...v1.3.0) (2018-1-18)
+# [1.3.0](https://github.com/dequelabs/axe-webdriverjs/compare/v1.2.1...v1.3.0) (2018-01-18)
+
+
+### Bug Fixes
+
+* allow errors to be caught by mocha ([f500305](https://github.com/dequelabs/axe-webdriverjs/commit/f500305))
+* Ensure that when the injection of axe-core into an iframe fails, the driver context is reset to something meaningful ([10cf353](https://github.com/dequelabs/axe-webdriverjs/commit/10cf353))
 
 
 ### Features
 
-* fix: Ensure meaningful driver context when axe fails in iframe
-* feat: use axe.run with optional promises
-* feat: update to axe-core version 2.6.1
+* update to axe-core version 2.6.1 ([1718ac5](https://github.com/dequelabs/axe-webdriverjs/commit/1718ac5))
 
-
-### Fixes
-
-* fix: allow errors to be caught by mocha
 
 
 <a name="1.2.1"></a>
@@ -52,7 +51,9 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Features
 
-* Add axe-core 2.6.0
+* change to axe.run (WIP) ([c3e94ca](https://github.com/dequelabs/axe-webdriverjs/commit/c3e94ca))
+* handle promises with axe.run ([02ee730](https://github.com/dequelabs/axe-webdriverjs/commit/02ee730))
+
 
 
 <a name="1.2.0"></a>
@@ -72,47 +73,33 @@ All notable changes to this project will be documented in this file. See [standa
 
 
 
-# Change Log
+<a name="1.1.4"></a>
+## [1.1.4](https://github.com/dequelabs/axe-webdriverjs/compare/1.1.1...v1.1.4) (2017-09-18)
 
-<!-- Release notes authoring guidelines: http://keepachangelog.com/ -->
 
-All notable changes to this project will be documented in this file.
 
-<!-- ## [Unreleased] -->
+<a name="1.1.1"></a>
+## [1.1.1](https://github.com/dequelabs/axe-webdriverjs/compare/1.1.0...1.1.1) (2017-05-20)
 
-## [1.1.5] - 2017-09-19
-### Changed
-- Update to axe-core 2.4.1, include in dependencies
 
-## [1.1.2] - 2017-06-14
-### Changed
-- Update to axe-core 2.3.0 to work with Firefox webdriver
 
-## [1.1.1] - 2017-05-20
-### Changed
-- Remove warn file on install
-- Update to axe-core 2.2.1 to resolve circular dependencies
+<a name="1.1.0"></a>
+# [1.1.0](https://github.com/dequelabs/axe-webdriverjs/compare/v0.5.0...1.1.0) (2017-05-02)
 
-## [1.1.0] - 2017-05-02
-### Changed
-- Move axe-core to dependencies
 
-## [0.5.0] - 2016-12-22
-### Added
-- Support for axe-cli by passing in a source for axe-core version
+### Bug Fixes
 
-### Changed
-- Upgrade to Selenium 3, which requires Node 6
-- Replace `~` with `^` in package.json to get more 
-- Allow running with Selenium remotely in tests
+* inject raw source to work with limited CSPs ([b6fa546](https://github.com/dequelabs/axe-webdriverjs/commit/b6fa546))
 
-## 0.4.0 - 2016-09-27
-### Added
-- New configure method building on axe-core API
 
-## 0.2.0 - 2015-08-16
-### Changed
-- Update to use aXe 1.1.0
 
-[Unreleased]: https://github.com/dequelabs/axe-webdriverjs/compare/v0.5.0...master
-[0.5.0]: https://github.com/dequelabs/axe-webdriverjs/compare/8d6cd08fabf507134fe3c6cf33516af00d8f4eb8...v0.5.0
+<a name="0.5.0"></a>
+# [0.5.0](https://github.com/dequelabs/axe-webdriverjs/compare/58bfa6e...v0.5.0) (2016-12-22)
+
+
+### Features
+
+* add changelog and update version ([#24](https://github.com/dequelabs/axe-webdriverjs/issues/24)) ([58bfa6e](https://github.com/dequelabs/axe-webdriverjs/commit/58bfa6e))
+
+
+
