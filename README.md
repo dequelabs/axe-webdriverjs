@@ -21,7 +21,7 @@ Install axe-webdriverjs and its dependencies: `npm install axe-webdriverjs`
 
 ## Usage
 
-This module uses a chainable API to assist in injecting, configuring and analyzing using aXe with Selenium WebDriverJS.  As such, it is required to pass an instance of WebDriver.
+This module uses a chainable API to assist in injecting, configuring and analyzing using aXe with Selenium WebDriverJS. As such, it is required to pass an instance of WebDriver.
 
 Here is an example of a script that will drive Selenium to this repository, perform analysis and then log results to the console.
 
@@ -35,17 +35,19 @@ var driver = new WebDriver.Builder()
 
 driver
   .get('https://dequeuniversity.com/demo/mars/')
-  .then(function () {
-    AxeBuilder(driver)
-      .analyze(function (results) {
-        console.log(results);
-      });
+  .then(function() {
+    AxeBuilder(driver).analyze(function(err, results) {
+      if (err) {
+        // Handle error somehow
+      }
+      console.log(results);
+    });
   });
 ```
 
 ### AxeBuilder(driver:WebDriver[, axeSource:string])
 
-Constructor for the AxeBuilder helper. You must pass an instance of selenium-webdriver as the first and only argument.  Can be called with or without the `new` keyword.
+Constructor for the AxeBuilder helper. You must pass an instance of selenium-webdriver as the first and only argument. Can be called with or without the `new` keyword.
 
 ```javascript
 var builder = AxeBuilder(driver);
@@ -79,16 +81,16 @@ AxeBuilder(driver)
 
 ### AxeBuilder#options(options:Object)
 
-Specifies options to be used by `axe.a11yCheck`.  **Will override any other configured options, including calls to `withRules` and `withTags`.** See [axe-core API documentation](https://github.com/dequelabs/axe-core/blob/master/doc/API.md) for information on its structure.
+Specifies options to be used by `axe.a11yCheck`. **Will override any other configured options, including calls to `withRules` and `withTags`.** See [axe-core API documentation](https://github.com/dequelabs/axe-core/blob/master/doc/API.md) for information on its structure.
 
 ```javascript
 AxeBuilder(driver)
-  .options({ checks: { "valid-lang": ["orcish"] }});
+  .options({ checks: { 'valid-lang': ['orcish'] } });
 ```
 
 ### AxeBuilder#withRules(rules:Mixed)
 
-Limits analysis to only those with the specified rule IDs.  Accepts a String of a single rule ID or an Array of multiple rule IDs. **Subsequent calls to `AxeBuilder#options`, `AxeBuilder#withRules` or `AxeBuilder#withRules` will override specified options.**
+Limits analysis to only those with the specified rule IDs. Accepts a String of a single rule ID or an Array of multiple rule IDs. **Subsequent calls to `AxeBuilder#options`, `AxeBuilder#withRules` or `AxeBuilder#withRules` will override specified options.**
 
 ```javascript
 AxeBuilder(driver)
@@ -102,7 +104,7 @@ AxeBuilder(driver)
 
 ### AxeBuilder#withTags(tags:Mixed)
 
-Limits analysis to only those with the specified rule IDs.  Accepts a String of a single tag or an Array of multiple tags.  **Subsequent calls to `AxeBuilder#options`, `AxeBuilder#withRules` or `AxeBuilder#withRules` will override specified options.**
+Limits analysis to only those with the specified rule IDs. Accepts a String of a single tag or an Array of multiple tags. **Subsequent calls to `AxeBuilder#options`, `AxeBuilder#withRules` or `AxeBuilder#withRules` will override specified options.**
 
 ```javascript
 AxeBuilder(driver)
@@ -116,7 +118,7 @@ AxeBuilder(driver)
 
 ### AxeBuilder#disableRules(rules:Mixed)
 
-Skips verification of the rules provided.  Accepts a String of a single rule ID or an Array of multiple rule IDs. **Subsequent calls to `AxeBuilder#options`, `AxeBuilder#disableRules` will override specified options.**
+Skips verification of the rules provided. Accepts a String of a single rule ID or an Array of multiple rule IDs. **Subsequent calls to `AxeBuilder#options`, `AxeBuilder#disableRules` will override specified options.**
 
 ```javascript
 AxeBuilder(driver)
@@ -130,7 +132,6 @@ AxeBuilder(driver)
   .withTags(['wcag2a', 'wcag2aa'])
   .disableRules('color-contrast');
 ```
-
 
 ### AxeBuilder#configure(config:Object)
 
@@ -146,18 +147,24 @@ var config = {
 };
 AxeBuilder(driver)
   .configure(config)
-  .analyze(function (results) {
+  .analyze(function(err, results) {
+    if (err) {
+      // Handle error somehow
+    }
     console.log(results);
   });
 ```
 
 ### AxeBuilder#analyze(callback:Function)
 
-Performs analysis and passes the result object to the provided callback function or promise function.  **Does not chain as the operation is asynchronous**
+Performs analysis and passes any encountered error and/or the result object to the provided callback function or promise function. **Does not chain as the operation is asynchronous**
 
 ```javascript
 AxeBuilder(driver)
-  .analyze(function (results) {
+  .analyze(function(err, results) {
+    if (err) {
+      // Handle error somehow
+    }
     console.log(results);
   });
 ```
@@ -167,10 +174,15 @@ Using the returned promise (optional):
 ```javascript
 AxeBuilder(driver)
   .analyze()
-  .then(function (results) {
+  .then(function(results) {
     console.log(results);
+  })
+  .catch(err => {
+    // Handle error somehow
   });
 ```
+
+_NOTE: to maintain backwards compatibility, the `analyze` function will also accept a callback which takes a single `results` argument. However, if an error is encountered during analysis, the error will be raised which will cause the **process to crash**. ⚠️ This functionality will be removed in the next major release.⚠️_
 
 ## Examples
 
@@ -179,7 +191,6 @@ This project has a couple integrations that demonstrate the ability and use of t
 1. [Running a single rule](test/integration/doc-lang.js)
 1. [Running against a page with frames](test/integration/frames.js)
 1. [SauceLabs example](test/sauce/sauce.js)
-
 
 ## Contributing
 

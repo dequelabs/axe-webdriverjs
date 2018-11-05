@@ -154,7 +154,8 @@ describe('Builder', function() {
         }
       })
         .configure(catsConfig)
-        .analyze(function(results) {
+        .analyze(function(err, results) {
+          assert.isNull(err);
           assert.equal(results, 'results');
           done();
         });
@@ -246,7 +247,8 @@ describe('Builder', function() {
         }
       })
         .options({ foo: 'bar' })
-        .analyze(function(results) {
+        .analyze(function(err, results) {
+          assert.isNull(err);
           assert.equal(results, 'results');
           done();
         });
@@ -292,7 +294,8 @@ describe('Builder', function() {
           };
         }
       })
-        .analyze(function(results) {
+        .analyze(function(err, results) {
+          assert.isNull(err);
           assert.equal(results, 'results');
           assert.equal(called, false);
           called = true;
@@ -301,6 +304,140 @@ describe('Builder', function() {
           assert.equal(called, true);
           done();
         });
+    });
+
+    describe('when no error is encountered', () => {
+      let builder;
+
+      before(() => {
+        const Builder = proxyquire('../../lib/index', {
+          './axe-injector': () => ({ inject: cb => cb() })
+        });
+
+        builder = new Builder({
+          executeAsyncScript() {
+            return Promise.resolve({ yay: 'heh' });
+          }
+        });
+      });
+
+      describe('and provided a callback', () => {
+        describe('with an arity of 1', () => {
+          it('should provide results as the first argument', done => {
+            builder.analyze(results => {
+              assert.strictEqual(results.yay, 'heh');
+              done();
+            });
+          });
+        });
+
+        describe('with an arity of 2', () => {
+          it('should provide results as the second argument', done => {
+            builder.analyze((err, results) => {
+              assert.isNull(err);
+              assert.strictEqual(results.yay, 'heh');
+              done();
+            });
+          });
+        });
+      });
+
+      describe('without a callback', () => {
+        it('should resolve with the results', done => {
+          builder.analyze().then(results => {
+            assert.strictEqual(results.yay, 'heh');
+            done();
+          });
+        });
+      });
+    });
+
+    describe('when an analysis error is encountered', () => {
+      let builder;
+
+      before(() => {
+        const Builder = proxyquire('../../lib/index', {
+          './axe-injector': () => ({ inject: cb => cb() })
+        });
+
+        builder = new Builder({
+          executeAsyncScript() {
+            return Promise.reject(new Error('boom!'));
+          }
+        });
+      });
+
+      describe('without a callback', () => {
+        it('should reject the returned promise', done => {
+          builder.analyze().catch(err => {
+            assert.strictEqual(err.message, 'boom!');
+            done();
+          });
+        });
+      });
+
+      describe('with a callback', () => {
+        describe('an arity of 1', () => {
+          // HACK: remove all unhandled rejection listeners to ensure ours fires.
+          let unhandledRejectionListeners;
+
+          before(() => {
+            unhandledRejectionListeners = process.listeners(
+              'unhandledRejection'
+            );
+            process.removeAllListeners('unhandledRejection');
+          });
+
+          after(() => {
+            for (const listener of unhandledRejectionListeners) {
+              process.on('unhandledRejection', listener);
+            }
+          });
+
+          it('should throw the error', done => {
+            let didThrowError = false;
+            process.once('unhandledRejection', err => {
+              assert.strictEqual(err.message, 'boom!');
+              didThrowError = true;
+            });
+
+            builder.analyze(results => {
+              // Do nothing.
+              assert.isNull(results);
+            });
+
+            // Allow the Promise to resolve. This prevents a race condition.
+            setImmediate(() => {
+              assert.isTrue(didThrowError);
+              done();
+            });
+          });
+        });
+
+        describe('an arity of 2', () => {
+          it('should provide the error as the first argument', done => {
+            builder.analyze((err, results) => {
+              assert.strictEqual(err.message, 'boom!');
+              assert.isNull(results);
+              done();
+            });
+          });
+
+          describe('and a .catch()', () => {
+            it('should not reject the wrapping Promise', done => {
+              builder
+                .analyze((err, results) => {
+                  assert.strictEqual(err.message, 'boom!');
+                  assert.isNull(results);
+                  done();
+                })
+                .catch(err => {
+                  assert.fail(`Rejected the promise: ${err.message}`);
+                });
+            });
+          });
+        });
+      });
     });
   });
 });
