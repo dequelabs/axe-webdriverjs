@@ -1,7 +1,7 @@
 {
   "name": "axe-webdriverjs",
   "description": "Provides a method to inject and analyze web pages using aXe",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "license": "MPL-2.0",
   "main": "dist/index.js",
   "contributors": [
@@ -48,7 +48,6 @@
   "scripts": {
     "lint": "eslint './lib/**/*.js' './test/**/*.js'",
     "fmt": "prettier --write './lib/**/*.js' './test/**/*.js'",
-    "precommit": "lint-staged",
     "test": "npm run test:unit && npm run test:integration",
     "test:unit": "mocha test/unit/*.js --require babel-register",
     "test:integration": "mocha test/integration/*.js --require babel-register",
@@ -71,16 +70,16 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
-    "babel-eslint": "^8.2.3",
+    "babel-eslint": "^9.0.0",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.7.0",
     "babel-register": "^6.26.0",
     "chai": "^4.1.2",
     "eslint": "^5.0.0",
-    "eslint-config-prettier": "^2.9.0",
+    "eslint-config-prettier": "^3.0.0",
     "http-server": "^0.11.1",
-    "husky": "^0.14.3",
-    "lint-staged": "^7.2.0",
+    "husky": "^1.0.0",
+    "lint-staged": "^8.0.0",
     "mocha": "^5.1.0",
     "nyc": "^12.0.2",
     "prettier": "^1.13.5",
@@ -126,5 +125,10 @@
       "text",
       "html"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
