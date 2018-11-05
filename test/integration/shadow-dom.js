@@ -72,7 +72,8 @@ describe('shadow-dom.html', function() {
             region: { enabled: false }
           }
         })
-        .analyze(function(results) {
+        .analyze()
+        .then(function(results) {
           assert.lengthOf(results.violations, 2);
           assert.equal(results.violations[0].id, 'aria-roles');
           assert.equal(results.violations[1].id, 'aria-valid-attr');
