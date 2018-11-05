@@ -1,9 +1,7 @@
-<a name="2.0.2"></a>
-## [2.0.2](https://github.com/dequelabs/axe-webdriverjs/compare/v2.0.1...v2.0.2) (2018-10-24)
+## [2.0.3](https://github.com/dequelabs/axe-webdriverjs/compare/v2.0.1...v2.0.3) (2018-11-02)
 
 
 
-<a name="2.0.1"></a>
 ## [2.0.1](https://github.com/dequelabs/axe-webdriverjs/compare/v2.0.0...v2.0.1) (2018-06-25)
 
 
@@ -14,12 +12,10 @@
 
 
 
-<a name="2.0.0"></a>
 # [2.0.0](https://github.com/dequelabs/axe-webdriverjs/compare/v2.0.0-alpha.1...v2.0.0) (2018-03-28)
 
 
 
-<a name="2.0.0-alpha.1"></a>
 # [2.0.0-alpha.1](https://github.com/dequelabs/axe-webdriverjs/compare/v1.3.0...v2.0.0-alpha.1) (2018-01-19)
 
 
@@ -29,7 +25,6 @@
 
 
 
-<a name="1.3.0"></a>
 # [1.3.0](https://github.com/dequelabs/axe-webdriverjs/compare/v1.2.1...v1.3.0) (2018-01-18)
 
 
@@ -45,7 +40,6 @@
 
 
 
-<a name="1.2.1"></a>
 ## [1.2.1](https://github.com/dequelabs/axe-webdriverjs/compare/v1.2.0...v1.2.1) (2017-12-19)
 
 
@@ -56,7 +50,6 @@
 
 
 
-<a name="1.2.0"></a>
 # [1.2.0](https://github.com/dequelabs/axe-webdriverjs/compare/v1.1.4...v1.2.0) (2017-11-16)
 
 
@@ -73,17 +66,14 @@
 
 
 
-<a name="1.1.4"></a>
 ## [1.1.4](https://github.com/dequelabs/axe-webdriverjs/compare/1.1.1...v1.1.4) (2017-09-18)
 
 
 
-<a name="1.1.1"></a>
 ## [1.1.1](https://github.com/dequelabs/axe-webdriverjs/compare/1.1.0...1.1.1) (2017-05-20)
 
 
 
-<a name="1.1.0"></a>
 # [1.1.0](https://github.com/dequelabs/axe-webdriverjs/compare/v0.5.0...1.1.0) (2017-05-02)
 
 
@@ -93,7 +83,6 @@
 
 
 
-<a name="0.5.0"></a>
 # [0.5.0](https://github.com/dequelabs/axe-webdriverjs/compare/58bfa6e...v0.5.0) (2016-12-22)
 
 
