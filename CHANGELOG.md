@@ -1,4 +1,9 @@
-## [2.0.3](https://github.com/dequelabs/axe-webdriverjs/compare/v2.0.1...v2.0.3) (2018-11-02)
+## [2.0.4](https://github.com/dequelabs/axe-webdriverjs/compare/v2.0.1...v2.0.4) (2018-11-06)
+
+
+### Bug Fixes
+
+* Allow errors bubble up to the caller ([#83](https://github.com/dequelabs/axe-webdriverjs/issues/83)) ([1605fb7](https://github.com/dequelabs/axe-webdriverjs/commit/1605fb7)), closes [#56](https://github.com/dequelabs/axe-webdriverjs/issues/56)
 
 
 
