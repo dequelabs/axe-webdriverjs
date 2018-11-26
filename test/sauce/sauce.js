@@ -28,7 +28,10 @@ describe('sauce-example', function() {
   });
 
   it('should find violations', function(done) {
-    AxeBuilder(driver).analyze(function(results) {
+    AxeBuilder(driver).analyze(function(err, results) {
+      if (err) {
+        return done(err);
+      }
       assert.equal(results.url, url);
       done();
     });
