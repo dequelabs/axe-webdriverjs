@@ -43,7 +43,8 @@ describe('doc-lang.html', function() {
   it('should find violations', function(done) {
     AxeBuilder(driver)
       .withRules('html-has-lang')
-      .analyze(function(results) {
+      .analyze()
+      .then(function(results) {
         assert.lengthOf(results.violations, 1);
         assert.equal(results.violations[0].id, 'html-has-lang');
         assert.lengthOf(results.passes, 0);
@@ -55,7 +56,8 @@ describe('doc-lang.html', function() {
     AxeBuilder(driver)
       .include('body')
       .withRules('html-has-lang')
-      .analyze(function(results) {
+      .analyze()
+      .then(function(results) {
         assert.lengthOf(results.violations, 0);
         assert.lengthOf(results.passes, 0);
         done();

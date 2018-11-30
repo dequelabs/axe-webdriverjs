@@ -202,7 +202,8 @@ describe('Builder', function() {
         .include('.joe')
         .exclude('.fred')
         .exclude('.bob')
-        .analyze(function() {
+        .analyze()
+        .then(function() {
           assert.isTrue(normalized);
           done();
         });
