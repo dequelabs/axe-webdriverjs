@@ -31,6 +31,15 @@ jobs:
       - restore_cache:
           key: v2-npm-cache-{{ checksum "package.json" }}
       - run: npm run lint
+  canary_release:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          key: v2-npm-cache-{{ checksum "package.json" }}
+      - run: .circleci/canary-release.js
+      - run: npm config set "//registry.npmjs.org/:_authToken" $NPM_AUTH
+      - run: npm publish --tag=next
   release:
     <<: *defaults
     steps:
@@ -39,6 +48,18 @@ jobs:
           key: v2-npm-cache-{{ checksum "package.json" }}
       - run: npm config set "//registry.npmjs.org/:_authToken" $NPM_AUTH
       - run: npm publish
+  github_release:
+    docker:
+      - image: circleci/golang:1.8
+    steps:
+      - checkout
+      - run: go get gopkg.in/aktau/github-release.v0
+      - run:
+          name: Download and run GitHub release script
+          command: |
+            curl https://raw.githubusercontent.com/dequelabs/attest-release-scripts/develop/src/node-github-release.sh -s -o ./node-github-release.sh
+            chmod +x ./node-github-release.sh
+            ./node-github-release.sh
 
 workflows:
   version: 2
@@ -51,6 +72,14 @@ workflows:
       - lint:
           requires:
             - dependencies
+      - canary_release:
+          requires:
+            - dependencies
+            - unit_tests
+            - lint
+          filters:
+            branches:
+              only: develop
       - release:
           requires:
             - dependencies
@@ -59,3 +88,6 @@ workflows:
           filters:
             branches:
               only: master
+      - github_release:
+          requires:
+            - release
