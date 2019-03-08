@@ -46,9 +46,24 @@ describe('AxeInjector', () => {
   });
 
   describe('errorHandler', () => {
+    // See https://github.com/dequelabs/axe-cli/issues/87.
+    it('writes to stderr (not stdout)', () => {
+      const injector = new AxeInjector({ driver: new MockWebDriver() });
+      const logSpy = sinon.spy(console, 'log');
+      const errorSpy = sinon.spy(console, 'error');
+
+      injector.errorHandler();
+
+      assert.equal(logSpy.callCount, 0);
+      logSpy.restore();
+
+      assert.equal(errorSpy.callCount, 1);
+      errorSpy.restore();
+    });
+
     it('only logs once', () => {
       const injector = new AxeInjector({ driver: new MockWebDriver() });
-      const spy = sinon.spy(console, 'log');
+      const spy = sinon.spy(console, 'error');
 
       injector.errorHandler();
       injector.errorHandler();
