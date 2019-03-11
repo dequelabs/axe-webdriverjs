@@ -1,3 +1,24 @@
+# Change Log
+
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+<a name="2.2.0"></a>
+# [2.2.0](https://github.com/dequelabs/axe-webdriverjs/compare/v2.0.1...v2.2.0) (2019-03-07)
+
+
+### Bug Fixes
+
+* log "iframe warning" to stderr ([#102](https://github.com/dequelabs/axe-webdriverjs/issues/102)) ([bb4fb2c](https://github.com/dequelabs/axe-webdriverjs/commit/bb4fb2c))
+* update `AxeBuilder#analyze()` usage ([#93](https://github.com/dequelabs/axe-webdriverjs/issues/93)) ([f2ead15](https://github.com/dequelabs/axe-webdriverjs/commit/f2ead15)), closes [#92](https://github.com/dequelabs/axe-webdriverjs/issues/92)
+
+
+### Features
+
+* add ES6 modules/TypeScript compatible export ([#94](https://github.com/dequelabs/axe-webdriverjs/issues/94)) ([eee46c9](https://github.com/dequelabs/axe-webdriverjs/commit/eee46c9)), closes [#74](https://github.com/dequelabs/axe-webdriverjs/issues/74)
+* Allow errors bubble up to the caller ([#83](https://github.com/dequelabs/axe-webdriverjs/issues/83)) ([5b1cf4e](https://github.com/dequelabs/axe-webdriverjs/commit/5b1cf4e)), closes [#56](https://github.com/dequelabs/axe-webdriverjs/issues/56)
+
+
+
 # [2.1.0](https://github.com/dequelabs/axe-webdriverjs/compare/v2.0.1...v2.1.0) (2018-11-13)
 
 
@@ -94,6 +115,3 @@
 ### Features
 
 * add changelog and update version ([#24](https://github.com/dequelabs/axe-webdriverjs/issues/24)) ([58bfa6e](https://github.com/dequelabs/axe-webdriverjs/commit/58bfa6e))
-
-
-
