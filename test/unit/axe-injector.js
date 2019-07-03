@@ -72,6 +72,15 @@ describe('AxeInjector', () => {
 
       spy.restore();
     });
+
+    it('throws the error if stdout is set to false', () => {
+      const injector = new AxeInjector({
+        driver: new MockWebDriver(),
+        options: { stdout: false }
+      });
+
+      assert.throws(injector.errorHandler);
+    });
   });
 
   describe('script', () => {
@@ -214,6 +223,24 @@ describe('AxeInjector', () => {
       stub.rejects(new Error('oh no!'));
 
       injector.inject(done);
+    });
+
+    it('passes the error if stdout is set to false', done => {
+      const injector = new AxeInjector({
+        driver: new MockWebDriver(),
+        options: { stdout: false }
+      });
+      const stub = sinon.stub(injector, 'injectIntoAllFrames');
+
+      stub.rejects(new Error('oh no!'));
+
+      injector.inject(err => {
+        if (err) {
+          return done();
+        }
+
+        done('injector did not pass error to callback');
+      });
     });
   });
 });
