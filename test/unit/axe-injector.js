@@ -239,7 +239,7 @@ describe('AxeInjector', () => {
           return done();
         }
 
-        done('injector did not pass error to callback');
+        done(new Error('injector did not pass error to callback'));
       });
     });
   });
