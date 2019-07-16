@@ -72,6 +72,15 @@ describe('AxeInjector', () => {
 
       spy.restore();
     });
+
+    it('throws the error if logIframeErrors is set to false', () => {
+      const injector = new AxeInjector({
+        driver: new MockWebDriver(),
+        options: { logIframeErrors: false }
+      });
+
+      assert.throws(injector.errorHandler);
+    });
   });
 
   describe('script', () => {
@@ -214,6 +223,24 @@ describe('AxeInjector', () => {
       stub.rejects(new Error('oh no!'));
 
       injector.inject(done);
+    });
+
+    it('passes the error if logIframeErrors is set to false', done => {
+      const injector = new AxeInjector({
+        driver: new MockWebDriver(),
+        options: { logIframeErrors: false }
+      });
+      const stub = sinon.stub(injector, 'injectIntoAllFrames');
+
+      stub.rejects(new Error('oh no!'));
+
+      injector.inject(err => {
+        if (err) {
+          return done();
+        }
+
+        done(new Error('injector did not pass error to callback'));
+      });
     });
   });
 });
