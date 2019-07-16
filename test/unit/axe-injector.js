@@ -73,10 +73,10 @@ describe('AxeInjector', () => {
       spy.restore();
     });
 
-    it('throws the error if stdout is set to false', () => {
+    it('throws the error if logIframeErrors is set to false', () => {
       const injector = new AxeInjector({
         driver: new MockWebDriver(),
-        options: { stdout: false }
+        options: { logIframeErrors: false }
       });
 
       assert.throws(injector.errorHandler);
@@ -225,10 +225,10 @@ describe('AxeInjector', () => {
       injector.inject(done);
     });
 
-    it('passes the error if stdout is set to false', done => {
+    it('passes the error if logIframeErrors is set to false', done => {
       const injector = new AxeInjector({
         driver: new MockWebDriver(),
-        options: { stdout: false }
+        options: { logIframeErrors: false }
       });
       const stub = sinon.stub(injector, 'injectIntoAllFrames');
 
