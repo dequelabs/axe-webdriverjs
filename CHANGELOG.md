@@ -1,6 +1,20 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## [2.3.0](https://github.com/dequelabs/axe-webdriverjs/compare/v2.2.0...v2.3.0) (2019-07-24)
+
+
+### Bug Fixes
+
+* Improve error message when an iframe was removed ([#118](https://github.com/dequelabs/axe-webdriverjs/issues/118)) ([d625312](https://github.com/dequelabs/axe-webdriverjs/commit/d625312))
+
+
+### Features
+
+* add option to not print iframe error to console ([b4f2494](https://github.com/dequelabs/axe-webdriverjs/commit/b4f2494))
+
+
 
 <a name="2.2.0"></a>
 # [2.2.0](https://github.com/dequelabs/axe-webdriverjs/compare/v2.0.1...v2.2.0) (2019-03-07)
