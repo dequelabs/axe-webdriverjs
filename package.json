@@ -1,7 +1,7 @@
 {
   "name": "axe-webdriverjs",
   "description": "Provides a method to inject and analyze web pages using aXe",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "license": "MPL-2.0",
   "main": "dist/index.js",
   "contributors": [
@@ -70,26 +70,27 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
-    "babel-eslint": "^9.0.0",
+    "babel-eslint": "^10.0.2",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.7.0",
     "babel-register": "^6.26.0",
     "chai": "^4.2.0",
-    "eslint": "^5.13.0",
-    "eslint-config-prettier": "^4.1.0",
+    "chromedriver": "^75.1.0",
+    "eslint": "^6.1.0",
+    "eslint-config-prettier": "^6.0.0",
     "http-server": "^0.11.1",
-    "husky": "^1.3.1",
-    "lint-staged": "^8.1.3",
-    "mocha": "^6.0.0",
-    "nyc": "^13.2.0",
-    "prettier": "^1.16.4",
-    "proxyquire": "^2.1.0",
+    "husky": "^3.0.1",
+    "lint-staged": "^9.2.0",
+    "mocha": "^6.2.0",
+    "nyc": "^14.1.1",
+    "prettier": "^1.18.2",
+    "proxyquire": "^2.1.1",
     "selenium-webdriver": "^3.6.0",
-    "sinon": "^7.2.4",
-    "standard-version": "^5.0.0"
+    "sinon": "^7.3.2",
+    "standard-version": "^6.0.1"
   },
   "dependencies": {
-    "axe-core": "^3.1.2",
+    "axe-core": "^3.3.1",
     "babel-runtime": "^6.26.0",
     "depd": "^2.0.0"
   },
