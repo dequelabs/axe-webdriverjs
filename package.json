@@ -75,7 +75,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-register": "^6.26.0",
     "chai": "^4.2.0",
-    "chromedriver": "^75.1.0",
+    "chromedriver": "^76.0.0",
     "eslint": "^6.1.0",
     "eslint-config-prettier": "^6.0.0",
     "http-server": "^0.11.1",
