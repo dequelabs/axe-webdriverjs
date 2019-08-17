@@ -79,7 +79,7 @@
     "eslint": "^6.1.0",
     "eslint-config-prettier": "^6.0.0",
     "http-server": "^0.11.1",
-    "husky": "^3.0.1",
+    "husky": "^3.0.4",
     "lint-staged": "^9.2.0",
     "mocha": "^6.2.0",
     "nyc": "^14.1.1",
