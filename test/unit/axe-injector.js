@@ -143,7 +143,7 @@ describe('AxeInjector', () => {
       let didReturnIframes = false;
       const driver = new MockWebDriver({
         findElements(selector) {
-          assert.equal(selector.tagName, 'iframe');
+          assert.equal(selector.value, 'iframe');
           if (didReturnIframes) {
             return;
           }
@@ -189,7 +189,7 @@ describe('AxeInjector', () => {
       let didReturnIframes = false;
       const driver = new MockWebDriver({
         findElements(selector) {
-          assert.equal(selector.tagName, 'iframe');
+          assert.equal(selector.value, 'iframe');
           if (didReturnIframes) {
             return;
           }
