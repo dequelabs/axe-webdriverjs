@@ -106,6 +106,7 @@ describe('sandbox-outer-configure-frame.html', function() {
 
   it('should find configured violations in all frames', function(done) {
     AxeBuilder(driver)
+      .sandbox(false)
       .options({
         rules: {
           'landmark-one-main': { enabled: false },
