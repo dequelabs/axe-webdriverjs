@@ -22,6 +22,10 @@ class MockWebDriver {
     return Promise.resolve();
   }
 
+  executeAsyncScript() {
+    return Promise.resolve();
+  }
+
   findElements() {
     return Promise.resolve([]);
   }
