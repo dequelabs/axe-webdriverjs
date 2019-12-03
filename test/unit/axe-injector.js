@@ -123,15 +123,15 @@ describe('AxeInjector', () => {
         driver: new MockWebDriver({
           switchTo() {
             return {
+              defaultContent() {},
               frame(frame) {
-                assert.equal(frame, 1);
-                switched = true;
+                switched |= frame == 1;
               }
             };
           }
         })
       });
-      await injector.handleFrame(1);
+      await injector.handleFrame([1]);
       assert(switched);
     });
 
@@ -139,7 +139,7 @@ describe('AxeInjector', () => {
       const driver = new MockWebDriver();
       const executeScript = sinon.spy(driver, 'executeScript');
       const injector = new AxeInjector({ driver });
-      await injector.handleFrame(1);
+      await injector.handleFrame([1]);
       assert(executeScript.calledOnce);
     });
 
@@ -158,7 +158,7 @@ describe('AxeInjector', () => {
 
       const injector = new AxeInjector({ driver });
       const executeScript = sinon.spy(driver, 'executeScript');
-      await injector.handleFrame(1);
+      await injector.handleFrame([1]);
       // once for the top-frame and 4 more for the other frames
       assert.equal(executeScript.callCount, 5);
     });
