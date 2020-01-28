@@ -90,7 +90,7 @@
     "standard-version": "^7.0.0"
   },
   "dependencies": {
-    "axe-core": "^3.3.2",
+    "axe-core": "^3.4.1",
     "babel-runtime": "^6.26.0",
     "depd": "^2.0.0"
   },
