@@ -6,7 +6,7 @@ function runWebdriver() {
   // Adding this should fix the weird CI failing issue
   // https://github.com/SeleniumHQ/selenium/issues/4961
   var chromeOptions = {
-    args: ['--no-sandbox']
+    args: ['--no-sandbox', '--headless', '--disable-gpu']
   };
   chromeCapabilities.set('chromeOptions', chromeOptions);
   if (process.env.REMOTE_SELENIUM_URL) {
