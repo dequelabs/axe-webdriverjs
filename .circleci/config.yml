@@ -4,6 +4,8 @@ defaults: &defaults
   docker:
     - image: circleci/node:10-browsers
   working_directory: ~/axe-webdriverjs
+  environment:
+    CHROMEDRIVER_VERSION: 83.0.4103.39
 
 jobs:
   dependencies:
