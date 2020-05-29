@@ -7,7 +7,7 @@
 [![License](https://img.shields.io/npm/l/axe-webdriverjs.svg)](LICENSE)
 [![CircleCI Build](https://circleci.com/gh/dequelabs/axe-webdriverjs/tree/master.svg?style=svg)](https://circleci.com/gh/dequelabs/axe-webdriverjs/tree/master)
 
-Provides a chainable aXe API for Selenium's WebDriverJS and automatically injects into all frames.
+Provides a chainable axe API for Selenium's WebDriverJS and automatically injects into all frames.
 
 ## Getting Started
 
@@ -21,7 +21,7 @@ Install axe-webdriverjs and its dependencies: `npm install axe-webdriverjs`
 
 ## Usage
 
-This module uses a chainable API to assist in injecting, configuring and analyzing using aXe with Selenium WebDriverJS. As such, it is required to pass an instance of WebDriver.
+This module uses a chainable API to assist in injecting, configuring and analyzing using axe with Selenium WebDriverJS. As such, it is required to pass an instance of WebDriver.
 
 Here is an example of a script that will drive Selenium to this repository, perform analysis and then log results to the console.
 
@@ -135,7 +135,7 @@ AxeBuilder(driver)
 
 ### AxeBuilder#configure(config:Object)
 
-Inject an aXe configuration object to modify the ruleset before running Analyze. Subsequent calls to this
+Inject an axe configuration object to modify the ruleset before running Analyze. Subsequent calls to this
 method will invalidate previous ones by calling `axe.configure` and replacing the config object. See
 [axe-core API documentation](https://github.com/dequelabs/axe-core/blob/master/doc/API.md#api-name-axeconfigure)
 for documentation on the object structure.
