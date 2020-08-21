@@ -51,6 +51,7 @@ describe('outer-configure-frame.html', function() {
         rules: {
           'landmark-one-main': { enabled: false },
           'page-has-heading-one': { enabled: false },
+          bypass: { enabled: false },
           region: { enabled: false },
           'html-lang-valid': { enabled: false }
         }
@@ -111,6 +112,7 @@ describe('sandbox-outer-configure-frame.html', function() {
         rules: {
           'landmark-one-main': { enabled: false },
           'page-has-heading-one': { enabled: false },
+          bypass: { enabled: false },
           region: { enabled: false },
           'html-lang-valid': { enabled: false }
         }
@@ -171,6 +173,7 @@ describe('sandbox-nested-configure-frame.html', function() {
         rules: {
           'landmark-one-main': { enabled: false },
           'page-has-heading-one': { enabled: false },
+          bypass: { enabled: false },
           region: { enabled: false },
           'html-lang-valid': { enabled: false }
         }

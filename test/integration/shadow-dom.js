@@ -69,6 +69,7 @@ describe('shadow-dom.html', function() {
           rules: {
             'landmark-one-main': { enabled: false },
             'page-has-heading-one': { enabled: false },
+            bypass: { enabled: false },
             region: { enabled: false }
           }
         })
