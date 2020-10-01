@@ -1,4 +1,9 @@
-# axe-webdriverjs
+# [DEPRECATED] axe-webdriverjs
+
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
+
+> This repository has been deprecated. The package has been moved to [axe-core-npm](https://github.com/dequelabs/axe-core-npm/tree/develop/packages/webdriverjs). The package will be available via NPM as [`@axe-core/webdriverjs`](https://www.npmjs.com/package/@axe-core/webdriverjs).
+
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/dequelabs/axe-webdriverjs.svg)](https://greenkeeper.io/)
 
