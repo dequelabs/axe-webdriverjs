@@ -4,8 +4,6 @@ defaults: &defaults
   docker:
     - image: circleci/node:10-browsers
   working_directory: ~/axe-webdriverjs
-  environment:
-    CHROMEDRIVER_VERSION: 83.0.4103.39
 
 jobs:
   dependencies:
@@ -13,10 +11,10 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: v2-npm-cache-{{ checksum "package.json" }}
+          key: v2-npm-cache-{{ checksum "package-lock.json" }}
       - run: npm install
       - save_cache:
-          key: v2-npm-cache-{{ checksum "package.json" }}
+          key: v2-npm-cache-{{ checksum "package-lock.json" }}
           paths:
             - node_modules
   test:
@@ -24,21 +22,21 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: v2-npm-cache-{{ checksum "package.json" }}
+          key: v2-npm-cache-{{ checksum "package-lock.json" }}
       - run: npm run test
   lint:
     <<: *defaults
     steps:
       - checkout
       - restore_cache:
-          key: v2-npm-cache-{{ checksum "package.json" }}
+          key: v2-npm-cache-{{ checksum "package-lock.json" }}
       - run: npm run lint
   canary_release:
     <<: *defaults
     steps:
       - checkout
       - restore_cache:
-          key: v2-npm-cache-{{ checksum "package.json" }}
+          key: v2-npm-cache-{{ checksum "package-lock.json" }}
       - run: .circleci/canary-release.js
       - run: npm config set "//registry.npmjs.org/:_authToken" $NPM_AUTH
       - run: npm publish --tag=next
@@ -47,7 +45,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: v2-npm-cache-{{ checksum "package.json" }}
+          key: v2-npm-cache-{{ checksum "package-lock.json" }}
       - run: npm config set "//registry.npmjs.org/:_authToken" $NPM_AUTH
       - run: npm publish
   github_release:
